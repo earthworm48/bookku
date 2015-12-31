@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 	devise :omniauthable, :omniauth_providers => [:facebook]
-
+	
 
 	def self.from_omniauth(auth)
 	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -14,5 +14,7 @@ class User < ActiveRecord::Base
 	    user.username = auth.info.name   # assuming the user model has a name
 	  end
 	end	
+
+
 
 end
