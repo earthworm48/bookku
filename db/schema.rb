@@ -11,16 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20151231034037) do
-=======
-ActiveRecord::Schema.define(version: 20151231043556) do
->>>>>>> c19b06ceed7ee8f1ee024622c869406cf9d93aba
+ActiveRecord::Schema.define(version: 20151231094429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
+  create_table "book_transactions", force: :cascade do |t|
+    t.string  "status"
+    t.integer "user_id"
+    t.integer "book_id"
+  end
+
+  add_index "book_transactions", ["book_id"], name: "index_book_transactions_on_book_id", using: :btree
+  add_index "book_transactions", ["user_id"], name: "index_book_transactions_on_user_id", using: :btree
+
   create_table "books", force: :cascade do |t|
     t.string   "name"
     t.integer  "price"
@@ -35,18 +39,10 @@ ActiveRecord::Schema.define(version: 20151231043556) do
 
   add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
 
-=======
-  create_table "book_transactions", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "book_id"
-    t.string  "status"
-  end
-
->>>>>>> c19b06ceed7ee8f1ee024622c869406cf9d93aba
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.integer  "postal"
-    t.integer  "points",                 default: 0
+    t.integer  "points"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -68,5 +64,7 @@ ActiveRecord::Schema.define(version: 20151231043556) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "book_transactions", "books"
+  add_foreign_key "book_transactions", "users"
   add_foreign_key "books", "users"
 end
