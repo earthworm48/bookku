@@ -15,8 +15,8 @@ class BooksController < ApplicationController
   end
 
 	private
-	def listing_params
-		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location).merge(user_id: current_user.id)
+	def book_params
+		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location)
 	end
 
 end
