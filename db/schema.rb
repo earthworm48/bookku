@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20151231043556) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.integer  "postal"
-    t.integer  "points"
+    t.integer  "points",                 default: 0
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
