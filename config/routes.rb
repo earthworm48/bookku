@@ -2,21 +2,20 @@ Rails.application.routes.draw do
 
   get 'home/index'
   
-
-
-
-
   root to: "home#index"
 
-
+  # devise_for :users
+  
+  # FB Sign out + devise sign out
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+   # do
+  # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
   resources :users, only: [:show]
 
-  # FB Sign out + devise sign out
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
-  delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  end
-
-
+  # devise_scope :user do
+  # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
