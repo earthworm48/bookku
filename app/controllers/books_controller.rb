@@ -6,6 +6,7 @@ class BooksController < ApplicationController
 
   def create
 		@book = Book.new(book_params)
+    # byebug
 		@book.save!
 		redirect_to @book
   end
@@ -22,7 +23,7 @@ class BooksController < ApplicationController
 
   	@book = Book.find(params[:id])
 		if @book.update(book_params)
-			byebug
+			
 			redirect_to @book
 		else
 			render :edit
@@ -31,6 +32,7 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
+    # byebug
 		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location)
 	end
 
