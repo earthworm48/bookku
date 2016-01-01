@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :books, only: [:new, :create, :show, :edit, :update]
+  resources :books
 
   # FB Sign out + devise sign out
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

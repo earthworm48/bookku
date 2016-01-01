@@ -3,7 +3,17 @@
 <br>
 Book Name: <%= @book.name%>
 
-<%= link_to 'Buy It'%>
-<%= link_to 'Edit', edit_book_path %>
+
+<div>
+	<%= link_to 'Buy It'%>
+</div>
+<div>
+	<%= link_to 'Edit Book', edit_book_path %>	
+</div>
+<div>
+	<%= link_to "Delete Book", book_path(@book), method: :delete  %>
+</div>
+
+<!-- 
 
 <h1>Comments</h1>
