@@ -4,12 +4,11 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
-  resources :users, only: [:show]
-
   resources :books
 
   # FB Sign out + devise sign out
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  resources :users, only: [:show]
    # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
