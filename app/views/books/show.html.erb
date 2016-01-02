@@ -5,7 +5,7 @@ Book Name: <%= @book.name%>
 <br>
 Owner: <%= @book.user.id%>
 
-<% unless @book.id == current_user.id%>
+<% unless @book.user.id == current_user.id%>
 	<div>
 		<%= form_for @book_transaction do |f|%>
 			<%= f.hidden_field :book_id, :value => @book.id%>
@@ -13,12 +13,12 @@ Owner: <%= @book.user.id%>
 		<% end%>
 	</div>
 <% else %>
-<div>
-	<%= link_to 'Edit Book', edit_book_path %>	
-</div>
-<div>
-	<%= link_to "Delete Book", book_path(@book), method: :delete  %>
-</div>
+	<div>
+		<%= link_to 'Edit Book', edit_book_path %>	
+	</div>
+	<div>
+		<%= link_to "Delete Book", book_path(@book), method: :delete  %>
+	</div>
 <% end %>
 
 
