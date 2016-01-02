@@ -2,12 +2,13 @@
 
 <br>
 Book Name: <%= @book.name%>
-
+<br>
+Owner: <%= @book.user.id%>
 
 <div>
 	<%= form_for @book_transaction do |f|%>
 		<%= f.hidden_field :book_id, :value => @book.id%>
-		<%= f.submit("Buy It",class:"btn btn-default btn-block") %>
+		<%= f.submit("Buy It",class: "btn btn-default btn-block") %>
 	<% end%>
 </div>
 <div>

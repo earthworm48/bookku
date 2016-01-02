@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # it won't overwrite the sign_in path
   resources :users, only: [:show]
 
-  resources :book_transactions, only: [:create]
+  resources :book_transactions, only: [:create,:destroy]
    # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
