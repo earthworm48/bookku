@@ -1,6 +1,10 @@
 Username: <%= @user.username%><br>
 Email: <%= @user.email%>
 
+<h1>My Point</h1>
+
+<%= @user.points %>
+
 <h1>My Books</h1>
 
 <% @user.books.each do |book|%>
