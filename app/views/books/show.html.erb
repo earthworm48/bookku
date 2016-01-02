@@ -5,7 +5,9 @@ Book Name: <%= @book.name%>
 
 
 <div>
-	<%= link_to 'Buy It'%>
+	<%= form_for @book_transaction do |f|%>
+		<%= f.submit("Buy It",class:"btn btn-default btn-block") %>
+	<% end%>
 </div>
 <div>
 	<%= link_to 'Edit Book', edit_book_path %>	
