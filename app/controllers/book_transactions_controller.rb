@@ -23,6 +23,17 @@ class BookTransactionsController < ApplicationController
   	redirect_to current_user	
   end
 
+  def successful_transaction
+    book_transaction = BookTransaction.find(params[:format])
+    book_transaction.book.user.points += book_transaction.book.price   
+    book_transaction.book.user.save!
+
+    book_transaction.status = 'successful'
+    book_transaction.save!
+
+    redirect_to current_user
+  end
+
   private
   def book_transaction_params
   	params.require(:book_transaction).permit(:book_id)

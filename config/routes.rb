@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :book_transactions, only: [:create,:destroy]
-   # do
+  post '/successful_transaction', to: 'book_transactions#successful_transaction'
+  # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
 
