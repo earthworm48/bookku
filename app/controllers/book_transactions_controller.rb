@@ -31,6 +31,8 @@ class BookTransactionsController < ApplicationController
     book_transaction.status = 'successful'
     book_transaction.save!
 
+    book_transaction.book.destroy!
+
     redirect_to current_user
   end
 
