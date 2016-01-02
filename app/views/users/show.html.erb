@@ -43,7 +43,7 @@ Email: <%= @user.email%>
 			<%= link_to(book_transaction.book.user.username, book_transaction.book.user) if @user.id == book_transaction.user_id%>
 			<%= link_to(book_transaction.user.username, book_transaction.user)if @user.id == book_transaction.book.user_id%>
 			</th>
-			<% if current_user = @user %>
+			<% if current_user = @user && book_transaction.status == 'pending' %>
 			<th>
 				<%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
 				<%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
