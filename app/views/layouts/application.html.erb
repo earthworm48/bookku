@@ -19,8 +19,17 @@
 		<%= link_to "Sign Up", new_user_registration_path %>
   <% end %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div class="container">
+	  <div class="alert alert-success"><%= notice %></div>
+	  <div class="alert alert-danger"><%= alert %></div>
+		<div class="alert alert-danger">
+		<% if @errors %>
+			<% @errors.full_messages.each do |message| %>
+				<%= message%>
+			<% end %>
+		<% end %>
+		</div>
+  </div>
 
 <%= yield %>
 
