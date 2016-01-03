@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   # this must be put after devise_for routes so 
   # it won't overwrite the sign_in path
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 
   resources :book_transactions, only: [:create,:destroy]
   post '/successful_transaction', to: 'book_transactions#successful_transaction'
