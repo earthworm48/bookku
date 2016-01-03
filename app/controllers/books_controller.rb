@@ -42,6 +42,11 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def search
+    @book = GoogleBooks.search(params[:term])
+    
+  end
+
 	private
 	def book_params
     # byebug

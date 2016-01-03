@@ -19,6 +19,11 @@
 		<%= link_to "Sign Up", new_user_registration_path %>
   <% end %>
 
+   <%= form_for Book.new, method: :get,:url => search_path, role: "search" do |f| %>
+      <%= text_field_tag :term, params[:term], placeholder:"Search the book" %>
+      <%= f.submit 'search', :class => 'btn btn-default' %>
+   <% end %>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
