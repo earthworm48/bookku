@@ -9,6 +9,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    byebug
 		@book = current_user.books.new(book_params)
 
     # byebug
@@ -43,8 +44,8 @@ class BooksController < ApplicationController
   end
 
   def search
-    @book = GoogleBooks.search(params[:term])
-    
+    @books = GoogleBooks.search(params[:term])
+    render 'search' 
   end
 
 	private
