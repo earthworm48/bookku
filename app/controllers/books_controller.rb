@@ -9,11 +9,13 @@ class BooksController < ApplicationController
   end
 
   def create
+    x = params[:book][:isbn].to_i
+    books = GoogleBooks.search("isbn: #{x}")
+    book = books.first
     byebug
-		@book = current_user.books.new(book_params)
-
-    # byebug
-		@book.save!
+		@book = current_user.books.new(book_params) 
+		# byebug
+    @book.save!
 		redirect_to @book
   end
 
