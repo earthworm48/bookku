@@ -4,18 +4,26 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
-  # devise_for :users
-  
+  resources :books
   # FB Sign out + devise sign out
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-   # do
+  
+  # this must be put after devise_for routes so 
+  # it won't overwrite the sign_in path
+  resources :users, only: [:show]
+
+  resources :book_transactions, only: [:create,:destroy]
+  post '/successful_transaction', to: 'book_transactions#successful_transaction'
+  # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
-  resources :users, only: [:show]
+
+
 
   # devise_scope :user do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

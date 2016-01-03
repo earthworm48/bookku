@@ -11,33 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231043556) do
+ActiveRecord::Schema.define(version: 20160102082051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "book_transactions", force: :cascade do |t|
+    t.string  "status",  default: "pending"
     t.integer "user_id"
     t.integer "book_id"
-    t.string  "status"
   end
+
+  add_index "book_transactions", ["book_id"], name: "index_book_transactions_on_book_id", using: :btree
+  add_index "book_transactions", ["user_id"], name: "index_book_transactions_on_user_id", using: :btree
+
+  create_table "books", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.string   "categories"
+    t.string   "condition"
+    t.string   "description"
+    t.string   "prefered_location"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "user_id"
+  end
+
+  add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.integer  "postal"
-    t.integer  "points",                 default: 0
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.integer  "points",                 default: 100
+    t.string   "email",                  default: "",  null: false
+    t.string   "encrypted_password",     default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "provider"
     t.string   "uid"
   end
@@ -47,4 +64,7 @@ ActiveRecord::Schema.define(version: 20151231043556) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "book_transactions", "books"
+  add_foreign_key "book_transactions", "users"
+  add_foreign_key "books", "users"
 end
