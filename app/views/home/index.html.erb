@@ -12,6 +12,7 @@
 <br>
 <% if !current_user.nil?%>
 <%=current_user.email%><br>
+<%=link_to "Buy points", new_point_transaction_path%><br>
 <%=link_to "Edit", edit_user_path(current_user)%><br>
 <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 <%end%>

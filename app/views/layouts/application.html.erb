@@ -4,7 +4,9 @@
   <title>Bookku</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <%= csrf_meta_tags %>  
+  <!-- PAYMENT BRAINTREE:  -->
+  <%= javascript_include_tag 'https://js.braintreegateway.com/v2/braintree.js', 'data-turbolinks-track' => true%>
 </head>
 <body>
 	<%= link_to "All Book", books_path%>
