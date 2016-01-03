@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :books
+  
   # FB Sign out + devise sign out
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
