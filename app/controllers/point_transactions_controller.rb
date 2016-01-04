@@ -12,7 +12,6 @@ class PointTransactionsController < ApplicationController
 		  amount: @transaction.points,
 		  payment_method_nonce: params[:payment_method_nonce]
 		)
-		byebug
 		if result.success?
 			@transaction.save
 			redirect_to root_path, notice: "Congraulations! Your transaction has been successfully!"
