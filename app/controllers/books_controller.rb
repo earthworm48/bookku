@@ -8,9 +8,14 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+  def search
+    @books = GoogleBooks.search(params[:term])
+    render 'search' 
+  end
+  
   def form
     @isbn = params[:book][:isbn].to_i
-    # byebug
+    
   end
 
   def create
@@ -51,10 +56,7 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  def search
-    @books = GoogleBooks.search(params[:term])
-    render 'search' 
-  end
+
 
 	private
 	def book_params
