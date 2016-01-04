@@ -7,8 +7,9 @@ class PointTransactionsController < ApplicationController
 
 	def create
 		@transaction = current_user.point_transactions.new
+		@transaction.points = params[:value].to_i
 		result = Braintree::Transaction.sale(
-		  :amount => "100.00",
+		  amount: @transaction.points,
 		  payment_method_nonce: params[:payment_method_nonce]
 		)
 		byebug

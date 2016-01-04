@@ -13,8 +13,10 @@
 <% if !current_user.nil?%>
 <%=current_user.email%><br>
 <h3>Buy Points</h3>
-<%=link_to "10", new_point_transaction_path%>, <%=link_to "20", new_point_transaction_path%><br><br>
+<%=link_to "10", new_point_transaction_path(value: 10)%>, <%=link_to "20", new_point_transaction_path(value: 20)%>, <%=link_to "30", new_point_transaction_path(value: 30)%><br><br>
 <%=link_to "Edit", edit_user_path(current_user)%><br>
 <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+
+<a href="point_transactions/new/?ref=10">Click to go to form</a>
 <%end%>
 
