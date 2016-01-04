@@ -6,7 +6,7 @@
 	<%= image_tag(book.image_link(:zoom => 5)) %>
 	<%= book.title%>
 
-	<%= form_for Book.new do |f|%>
+	<%= form_for(Book.new, :url => form_path) do |f|%>
 		<%= f.hidden_field :isbn, value: book.isbn %>
 	<%= f.submit("Choose This Book")%>
 	
@@ -15,3 +15,4 @@
 	<% end %>
 	
 <% end %>
+
