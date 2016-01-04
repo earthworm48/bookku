@@ -4,18 +4,12 @@
   <title>Bookku</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>  
   <!-- PAYMENT BRAINTREE:  -->
   <%= javascript_include_tag 'https://js.braintreegateway.com/v2/braintree.js', 'data-turbolinks-track' => true%>
-  <!-- BOOTSTRAP -->
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <%= csrf_meta_tags %>  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -23,15 +17,8 @@
 
 	<%= link_to "All Book", books_path%>
 
-	<% if current_user%>
-		<%= link_to "My Profile", current_user %>
-		<%= link_to "Log Out", destroy_user_session_path, method: :delete%>
-		<%= link_to "Add a book", new_book_path%>
-	<% else %>
-		<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-		<%= link_to "Sign In", new_user_session_path %>
-		<%= link_to "Sign Up", new_user_registration_path %>
-  <% end %>
+
+	<%= render 'layouts/header' %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
@@ -39,9 +26,7 @@
 <%= yield %>
 
 
-<!-- set up the modal to start hidden and fade in and out -->
-
-
+<%= render 'layouts/footer' %>
 
 </body>
 </html>
