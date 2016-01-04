@@ -5,24 +5,22 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-	<%= link_to "All Book", books_path%>
 
-	<% if current_user%>
-		<%= link_to "My Profile", current_user %>
-		<%= link_to "Log Out", destroy_user_session_path, method: :delete%>
-		<%= link_to "Add a book", new_book_path%>
-	<% else %>
-		<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-		<%= link_to "Sign In", new_user_session_path %>
-		<%= link_to "Sign Up", new_user_registration_path %>
-  <% end %>
+	<%= render 'layouts/header' %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
 <%= yield %>
+
+
+<%= render 'layouts/footer' %>
 
 </body>
 </html>
