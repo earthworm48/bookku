@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/successful_transaction', to: 'book_transactions#successful_transaction'
   get '/search', to: 'books#search'
 
-  resources :comments, only: [:new, :create]
+  # resources :comments, only: [:new, :create]
   # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end

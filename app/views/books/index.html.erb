@@ -3,7 +3,7 @@
 <% @books.each do |book|%>
 	
 	<% unless book.book_transaction %>
-		<p><%=link_to( book.title, book) %></p>
+		<p><%=link_to( book.name, book) %></p>
 	<% end %>
 
 <% end%>
