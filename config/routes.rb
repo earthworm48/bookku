@@ -4,20 +4,27 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
-  resources :books
+  resources :point_transactions, only: [:new, :create]
+
   # FB Sign out + devise sign out
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
   # this must be put after devise_for routes so 
   # it won't overwrite the sign_in path
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
+
 
   resources :book_transactions, only: [:create,:destroy]
   post '/successful_transaction', to: 'book_transactions#successful_transaction'
+  get '/search', to: 'books#search'
+  post '/form', to: 'books#form'
+
+  resources :books
+  # resources :comments, only: [:new, :create]
   # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
-
+  get '/local_search', to: "books#local_search"
 
 
   # devise_scope :user do
