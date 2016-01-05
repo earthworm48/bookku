@@ -99,7 +99,7 @@
 	          	</div>
 
 	          	<div class="col-md-1 column">
-		          	<%= book_transaction.book.price %>
+		          	<%= book_transaction.book.price %> points
 	          	</div>
 
 	          	<div class="col-md-1 column">
@@ -138,7 +138,8 @@
 	          <% end %>
 
 
-						<% @user.books.each do |book|%> 
+						<% @user.books.each do |book|%>
+						<% unless book.book_transaction.status == "pending" %> 
 					  <div class="row clearfix top-buffer"> 
 						       		        
 	          	<div class="col-md-2 column">
@@ -174,6 +175,7 @@
 										</th>
 									<% end %>
 								<% end %>
+
 	          	</div>
 
 	          	<div class="col-md-1 column">
@@ -187,6 +189,7 @@
 								</div>
 	          	</div>
 	          </div>  	
+          <% end %>
           <% end %>   
 					</div>
 
