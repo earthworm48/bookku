@@ -7,9 +7,9 @@
 Book Name: <%= @book.name%>
 <br>
 Owner: <%= @book.user.id%>
-
 Description: <%= @book.description %>
 
+<% if current_user%>
 	<% unless @book.user.id == current_user.id%>
 		<div>
 			<%= form_for @book_transaction do |f|%>
@@ -25,4 +25,8 @@ Description: <%= @book.description %>
 			<%= link_to "Delete Book", book_path(@book), method: :delete  %>
 		</div>
 	<% end %>
+<% end %>
+
+
+
 

@@ -56,7 +56,10 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-
+  def local_search
+    @books = Book.search params[:term]
+    render :index
+  end
 
 	private
 	def book_params
