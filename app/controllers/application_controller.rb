@@ -11,4 +11,16 @@ class ApplicationController < ActionController::Base
 	def redirect_back_or(path)
 	  redirect_to request.referer || path
 	end
+
+
+	# GENERATE TOKEN FOR BRAINTREE
+	def index
+  	@client_token = generate_client_token
+  	@transaction = PointTransaction.new
+  end
+
+
+  def generate_client_token
+  	Braintree::ClientToken.generate
+  end
 end

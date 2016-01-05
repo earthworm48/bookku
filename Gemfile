@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+# Gon
+gem 'gon'
 # Pagination
 gem "will_paginate"
 # Messages

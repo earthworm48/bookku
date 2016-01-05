@@ -1,10 +1,5 @@
 class PointTransactionsController < ApplicationController
 
-	def new
-		@client_token = generate_client_token
-		@transaction = PointTransaction.new
-	end
-
 	def create
 		@transaction = current_user.point_transactions.new
 		@transaction.points = params[:value]
@@ -12,6 +7,7 @@ class PointTransactionsController < ApplicationController
 		  amount: "#{@transaction.points}",
 		  payment_method_nonce: params[:payment_method_nonce]
 		)
+		byebug
 		if result.success?
 			@transaction.user.points += @transaction.points
 			@transaction.user.save

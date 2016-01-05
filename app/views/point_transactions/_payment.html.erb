@@ -1,41 +1,16 @@
-<div id="myModal" class="modal fade">
-  <div class="modal-dialog">
+  
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <!-- dialog body -->
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <%=form_for @transaction do |f| %>
-					<div id="payment-form"></div>
-
-					<%= f.submit 'Submit', :class => 'btn btn-default' %>
-				<%end%>
-      </div>
-      <!-- dialog buttons -->
-      <div class="modal-footer"><button type="button" class="btn btn-primary">OK</button></div>
+        <%=form_for @transaction, url: point_transactions_path do |f| %>
+          <div id="payment-form"></div>
+          <br>
+          <%= hidden_field_tag 'value', params[:value] %>
+        <%= f.submit 'Submit', class: 'btn btn-success btn-lg' %>
+        <%end%>
     </div>
   </div>
 </div>
-<script>
-    $("#myModal").on("show", function() {    // wire up the OK button to dismiss the modal when shown
-        $("#myModal a.btn").on("click", function(e) {
-            console.log("button pressed");   // just as an example...
-            $("#myModal").modal('hide');     // dismiss the dialog
-        });
-    });
-    $("#myModal").on("hide", function() {    // remove the event listeners when the dialog is dismissed
-        $("#myModal a.btn").off("click");
-    });
-    
-    $("#myModal").on("hidden", function() {  // remove the actual elements from the DOM when fully hidden
-        $("#myModal").remove();
-    });
-    
-    $("#myModal").modal({                    // wire up the actual modal functionality and show the dialog
-      "backdrop"  : "static",
-      "keyboard"  : true,
-      "show"      : true                     // ensure the modal is shown immediately
-    });
-</script>
 
 <script>
 // We generated a client token for you so you can test out this code
