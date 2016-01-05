@@ -25,19 +25,6 @@
 	  	<% end %>
   </div>
 
-  <div class="container">
-	  <div class="alert alert-success"><%= notice %></div>
-	  <div class="alert alert-danger"><%= alert %></div>
-		<div class="alert alert-danger">
-		<% if @errors %>
-			<% @errors.full_messages.each do |message| %>
-				<%= message%>
-			<% end %>
-		<% end %>
-		</div>
-  </div>
-
-
 <%= yield %>
 
 <%= render 'layouts/footer' %>
