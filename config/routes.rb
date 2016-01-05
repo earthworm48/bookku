@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
-
+  get '/local_search', to: "books#local_search"
 
 
   # devise_scope :user do

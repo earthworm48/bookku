@@ -9,11 +9,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Bokku Bokku</a>
+                <a class="navbar-brand" href="#">Bookku Bookku</a>
             </div>
 
-            
-    <%= form_for Book.new, method: :get , :html => {:class => "navbar-form navbar-left"}, role: "search" do |f| %>
+
+    <%= form_for Book.new, method: :get , url: local_search_path, :html => {:class => "navbar-form navbar-left"}, role: "search" do |f| %>
         <%= text_field_tag :term, params[:term],placeholder:"Search book name here" %>
         <%= f.submit 'search', :class => 'btn btn-default' %>
     <% end %>
@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
-            
+
         </div>
         <!-- /.container -->
     </nav>
