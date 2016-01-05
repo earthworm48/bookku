@@ -29,7 +29,8 @@ Book Name: <%= @book.name%>
 <br>
 Owner: <%= @book.user.id%>
 
-<% unless @book.user.id == current_user.id%>
+<% if current_user %>
+<% if @book.user.id != current_user.id%>
 	<div>
 		<%= form_for @book_transaction do |f|%>
 			<%= f.hidden_field :book_id, :value => @book.id%>
@@ -44,6 +45,6 @@ Owner: <%= @book.user.id%>
 		<%= link_to "Delete Book", book_path(@book), method: :delete  %>
 	</div>
 <% end %>
+<% end %>
 
-
-<h1>Any thoughts?</h1>
+<h1>What else can I help you with?</h1>
