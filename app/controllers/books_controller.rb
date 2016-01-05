@@ -43,7 +43,8 @@ class BooksController < ApplicationController
   end
 
   def local_search
-    byebug
+    @books = Book.search params[:term]
+    render :index
   end
 
 	private
