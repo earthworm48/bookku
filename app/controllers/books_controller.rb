@@ -8,11 +8,25 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  def create
-		@book = current_user.books.new(book_params)
+  def search
+    @books = GoogleBooks.search(params[:term])
+    render 'search' 
+  end
+  
+  def form
+    @isbn = params[:book][:isbn].to_i
+    
+  end
 
+  def create
     # byebug
-		@book.save!
+    x = params[:book][:isbn].to_i
+    books = GoogleBooks.search("isbn: #{x}")
+    book = books.first
+    # byebug
+		@book = current_user.books.new(name: book.title, description: book.description, isbn: book.isbn.to_s, image_url: book.image_link) 
+		
+    @book.save!
 		redirect_to @book
   end
 
@@ -50,7 +64,7 @@ class BooksController < ApplicationController
 	private
 	def book_params
     # byebug
-		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location)
+		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn)
 	end
 
 end

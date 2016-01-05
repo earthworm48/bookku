@@ -1,58 +1,60 @@
-Username: <%= @user.username%><br>
-Email: <%= @user.email%>
+<div class="content">
+	Username: <%= @user.username%><br>
+	Email: <%= @user.email%>
 
-<h1>My Point</h1>
+	<h1>My Point</h1>
 
-<%= @user.points %>
+	<%= @user.points %>
 
-<h1>My Books</h1>
+	<h1>My Books</h1>
 
-<% @user.books.each do |book|%>
-	<%= link_to book.name, book%>
-	<br>
-<% end %>
-
-<h1> My Transactions</h1>
-<div class="table-responsive">
-	<table class="table">
-	<thead>
-		<tr>
-			<th>Type of Transaction</th>
-			<th>Book Name</th>
-			<th>Price</th>
-			<th>Status</th>
-			<th>Buyer/Seller</th>
-			<% if current_user == @user %>
-				<th>Manage Transaction</th>
-			<% end %>
-		</tr>
-	</thead>
-
-	<% @book_transactions.each do |book_transaction|%>
-	<tbody>
-		<tr>
-			<th>
-			<%="Buy" if @user.id == book_transaction.user_id%>
-			<%="Sell" if @user.id == book_transaction.book.user_id%>
-			</th>
-			<th><%= link_to book_transaction.book.name, book_transaction.book%></th>
-			<th><%= book_transaction.book.price %></th>
-			<th><%= book_transaction.status %></th>
-			<th>
-
-			<%= link_to(book_transaction.book.user.username, book_transaction.book.user) if @user.id == book_transaction.user_id%>
-			<%= link_to(book_transaction.user.username, book_transaction.user)if @user.id == book_transaction.book.user_id%>
-			</th>
-			<% if current_user = @user && book_transaction.status == 'pending' %>
-			<th>
-				<%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
-				<%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
-					<%= f.submit("Receive Book", data: {confirm: "Are you sure?"}) if @user.id == book_transaction.user_id%>
-				<% end %>
-			</th>
-			<% end %>
-		</tr>
-	</tbody>
+	<% @user.books.each do |book|%>
+		<%= link_to book.name, book%>
+		<br>
 	<% end %>
-	</table>
+
+	<h1> My Transactions</h1>
+	<div class="table-responsive">
+		<table class="table">
+		<thead>
+			<tr>
+				<th>Type of Transaction</th>
+				<th>Book Name</th>
+				<th>Price</th>
+				<th>Status</th>
+				<th>Buyer/Seller</th>
+				<% if current_user == @user %>
+					<th>Manage Transaction</th>
+				<% end %>
+			</tr>
+		</thead>
+
+		<% @book_transactions.each do |book_transaction|%>
+		<tbody>
+			<tr>
+				<th>
+				<%="Buy" if @user.id == book_transaction.user_id%>
+				<%="Sell" if @user.id == book_transaction.book.user_id%>
+				</th>
+				<th><%= link_to book_transaction.book.name, book_transaction.book%></th>
+				<th><%= book_transaction.book.price %></th>
+				<th><%= book_transaction.status %></th>
+				<th>
+
+				<%= link_to(book_transaction.book.user.username, book_transaction.book.user) if @user.id == book_transaction.user_id%>
+				<%= link_to(book_transaction.user.username, book_transaction.user)if @user.id == book_transaction.book.user_id%>
+				</th>
+				<% if current_user = @user && book_transaction.status == 'pending' %>
+				<th>
+					<%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
+					<%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
+						<%= f.submit("Receive Book", data: {confirm: "Are you sure?"}) if @user.id == book_transaction.user_id%>
+					<% end %>
+				</th>
+				<% end %>
+			</tr>
+		</tbody>
+		<% end %>
+		</table>
+	</div>
 </div>
