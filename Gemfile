@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+# Braintree
+gem "braintree"
 # figaro
 gem 'figaro'
 # foreman

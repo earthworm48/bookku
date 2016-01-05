@@ -4,13 +4,16 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
+
+  resources :point_transactions, only: [:new, :create]
   resources :books
   # FB Sign out + devise sign out
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
   # this must be put after devise_for routes so 
   # it won't overwrite the sign_in path
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
+
 
   resources :book_transactions, only: [:create,:destroy]
   post '/successful_transaction', to: 'book_transactions#successful_transaction'
