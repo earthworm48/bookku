@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-
+# Pagination
+gem "will_paginate"
+# Messages
+gem 'mailboxer'
 # Braintree
 gem "braintree"
 # figaro
