@@ -1,9 +1,11 @@
-<h1> Book Index </h1>
+<div class="content">
+	<h1> Book Index </h1>
 
-<% @books.each do |book|%>
-	
-	<% unless book.book_transaction %>
-		<p><%=link_to( book.name, book) %></p>
-	<% end %>
+	<% @books.each do |book|%>
+		
+		<% unless book.book_transaction %>
+			<p><%=link_to( book.name, book) %></p>
+		<% end %>
 
-<% end%>
+	<% end%>
+</div>
