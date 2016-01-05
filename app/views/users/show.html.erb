@@ -1,60 +1,119 @@
-<div class="content">
-	Username: <%= @user.username%><br>
-	Email: <%= @user.email%>
+<div class="container">
 
-	<h1>My Point</h1>
+	<div class="panel panel-default">
+		<div class="panel-heading" style="text-align: right; font-size: 30px">
+		<strong>Points: <%= @user.points%></strong>
+		</div>
+		<div class="panel-body">
+	    <div class="row clearfix">
 
-	<%= @user.points %>
+				<div class="col-md-2 column">
+					<img class="img-thumbnail" alt="140x140" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTHV68gr6LcqQplcCJcbKdUTRiK_0_QEwuHImxAcrpTDBlfLOPDELU3PxcB" />
+				</div>
 
-	<h1>My Books</h1>
+				<div class="col-md-8 column">
+					<blockquote>
+						<p>
+							<%= @user.username%>
+						<cite>Email :<%= @user.email %></cite></small>
+						<br>
+						<cite>Postal :<%= @user.postal %></cite></small>
+						</p>
+					</blockquote>
+				</div>
 
-	<% @user.books.each do |book|%>
-		<%= link_to book.name, book%>
-		<br>
-	<% end %>
+				<div class="col-md-2 column">
+					<button class="btn btn-default btn-block" type="button">Edit</button>
+					<button class="btn btn-default btn-block" type="button">Message</button>
+					<button class="btn btn-default btn-block" type="button">Save</button>         
+				</div>
+			</div>
+		</div>        		 				
+	</div>
 
-	<h1> My Transactions</h1>
-	<div class="table-responsive">
-		<table class="table">
-		<thead>
-			<tr>
-				<th>Type of Transaction</th>
-				<th>Book Name</th>
-				<th>Price</th>
-				<th>Status</th>
-				<th>Buyer/Seller</th>
-				<% if current_user == @user %>
-					<th>Manage Transaction</th>
-				<% end %>
-			</tr>
-		</thead>
 
-		<% @book_transactions.each do |book_transaction|%>
-		<tbody>
-			<tr>
-				<th>
-				<%="Buy" if @user.id == book_transaction.user_id%>
-				<%="Sell" if @user.id == book_transaction.book.user_id%>
-				</th>
-				<th><%= link_to book_transaction.book.name, book_transaction.book%></th>
-				<th><%= book_transaction.book.price %></th>
-				<th><%= book_transaction.status %></th>
-				<th>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="tabbable" id="tabs-444468">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#panel-transactions" data-toggle="tab">Transactions</a>
+					</li>
+					<li>
+						<a href="#panel-history" data-toggle="tab">History</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					
+					<div class="tab-pane active" id="panel-transactions">
+					  <div class="row clearfix">
+        			<div class="col-md-12 column">
+        				<hr>
+	              <% @user.books.each do |book|%>
+	               	<%= link_to book.name, book %>
+	               	<hr>
+	              <% end %>
+         			</div>
+            </div>
+					</div>
 
-				<%= link_to(book_transaction.book.user.username, book_transaction.book.user) if @user.id == book_transaction.user_id%>
-				<%= link_to(book_transaction.user.username, book_transaction.user)if @user.id == book_transaction.book.user_id%>
-				</th>
-				<% if current_user = @user && book_transaction.status == 'pending' %>
-				<th>
-					<%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
-					<%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
-						<%= f.submit("Receive Book", data: {confirm: "Are you sure?"}) if @user.id == book_transaction.user_id%>
-					<% end %>
-				</th>
-				<% end %>
-			</tr>
-		</tbody>
-		<% end %>
-		</table>
+					<div class="tab-pane" id="panel-history">
+						<div class="row clearfix">
+							<div class="col-md-12 column">
+
+	    					<div class="table-responsive">
+									<table class="table">
+									<thead>
+										<tr>
+											<th>Type of Transaction</th>
+											<th>Book Name</th>
+											<th>Points</th>
+											<th>Status</th>
+											<th>Buyer/Seller</th>
+											<% if current_user == @user %>
+												<th>Manage Transaction</th>
+											<% end %>
+										</tr>
+									</thead>
+
+									<% @book_transactions.each do |book_transaction|%>
+									<tbody>
+										<tr>
+											<th>
+											<center>
+												<%="Buy" if @user.id == book_transaction.user_id%>
+											</center>
+											<center>
+												<%="Sell" if @user.id == book_transaction.book.user_id%>
+											</center>											
+											</th>
+											<th><%= link_to book_transaction.book.name, book_transaction.book%></th>
+											<th><%= book_transaction.book.price %></th>
+											<th><%= book_transaction.status %></th>
+											<th>
+
+											<%= link_to(book_transaction.book.user.username, book_transaction.book.user) if @user.id == book_transaction.user_id%>
+											<%= link_to(book_transaction.user.username, book_transaction.user)if @user.id == book_transaction.book.user_id%>
+											</th>
+											<% if current_user = @user && book_transaction.status == 'pending' %>
+											<th>
+												<%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
+												<%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
+													<%= f.submit("Book Received", data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
+												<% end %>
+											</th>
+											<% end %>
+										</tr>
+									</tbody>
+									<% end %>
+								</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
 	</div>
 </div>
