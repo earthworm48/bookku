@@ -2,7 +2,7 @@
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-        <%=form_for @transaction, url: point_transactions_path do |f| %>
+        <%=form_for point_transactions_path, url: point_transactions_path do |f| %>
           <div id="payment-form"></div>
           <br>
           <%= hidden_field_tag 'value', params[:value] %>

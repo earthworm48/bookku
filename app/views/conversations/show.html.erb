@@ -1,7 +1,6 @@
 <% page_header "Conversation" %>
 
-<p>Chatting with
-  <%= render 'conversations/participants', conversation: @conversation %>
+<p>Messages with <%=User.find(@conversation.receipts.first.receiver_id).username%>
 </p>
 
 <div class="panel panel-default">

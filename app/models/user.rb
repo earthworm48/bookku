@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	
 
 	def mailboxer_email(object)
-		self.email
+		email
 	end
 
 	def self.from_omniauth(auth)
