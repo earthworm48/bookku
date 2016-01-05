@@ -1,10 +1,14 @@
 <div class="content">
 	<h1>book show</h1>
 
-	<br>
-	Book Name: <%= @book.name%>
-	<br>
-	Owner: <%= @book.user.id%>
+<br>
+<%= image_tag(@book.image_url) %>
+<br>
+Book Name: <%= @book.name%>
+<br>
+Owner: <%= @book.user.id%>
+
+Description: <%= @book.description %>
 
 	<% unless @book.user.id == current_user.id%>
 		<div>
@@ -22,6 +26,3 @@
 		</div>
 	<% end %>
 
-
-	<h1>Comments</h1>
-</div>

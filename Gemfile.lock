@@ -82,7 +82,12 @@ GEM
       thor (~> 0.19.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    googlebooks (0.0.9)
+      httparty
     hashie (3.4.3)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.4.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -202,6 +207,7 @@ DEPENDENCIES
   figaro
   font-awesome-rails
   foreman
+  googlebooks (~> 0.0.9)
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
