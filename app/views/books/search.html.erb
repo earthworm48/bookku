@@ -1,0 +1,18 @@
+<h1>Search Result</h1>
+
+
+<% @books.each do |book| %>
+
+	<%= image_tag(book.image_link(:zoom => 5)) %>
+	<%= book.title%>
+
+	<%= form_for(Book.new, :url => form_path) do |f|%>
+		<%= f.hidden_field :isbn, value: book.isbn %>
+	<%= f.submit("Choose This Book")%>
+	
+	<br>		
+	
+	<% end %>
+	
+<% end %>
+
