@@ -139,57 +139,59 @@
 
 
 						<% @user.books.each do |book|%>
-						<% unless book.book_transaction.status == "pending" %> 
-					  <div class="row clearfix top-buffer"> 
-						       		        
-	          	<div class="col-md-2 column">
-	          		<%= image_tag book.image_url%>
-	          	</div>
+						<% if book.book_transaction %>
+							<% unless book.book_transaction.status == "pending" %> 
+							  <div class="row clearfix top-buffer"> 
+								       		        
+			          	<div class="col-md-2 column">
+			          		<%= image_tag book.image_url%>
+			          	</div>
 
-	          	<div class="col-md-4 column book-title">
-	          		<%= link_to book.name, book %>
-	          	</div>
+			          	<div class="col-md-4 column book-title">
+			          		<%= link_to book.name, book %>
+			          	</div>
 
-	          	<div class="col-md-2 column">
+			          	<div class="col-md-2 column">
 
-	          		<%= book.book_transaction.status if book.book_transaction %>
-	          		<%= "No Request" unless book.book_transaction %>
-	          	</div>
+			          		<%= book.book_transaction.status if book.book_transaction %>
+			          		<%= "No Request" unless book.book_transaction %>
+			          	</div>
 
-	          	<div class="col-md-1 column">
-		          	<%= book.price%> points
-	          	</div>
+			          	<div class="col-md-1 column">
+				          	<%= book.price%> points
+			          	</div>
 
-	          	<div class="col-md-1 column">
-	          		Sell
-	          	</div>
+			          	<div class="col-md-1 column">
+			          		Sell
+			          	</div>
 
-	          	<div class="col-md-1 column">
-		          	<% if book.book_transaction %>
-		          		<% if current_user = @user && book.book_transaction.status == 'pending' %>
-										<th>
-											<%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
-											<%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
-												<%= f.submit("Book Received", data: {confirm: "Are you sure you want to delete this transaction?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
+			          	<div class="col-md-1 column">
+				          	<% if book.book_transaction %>
+				          		<% if current_user = @user && book.book_transaction.status == 'pending' %>
+												<th>
+													<%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
+													<%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
+														<%= f.submit("Book Received", data: {confirm: "Are you sure you want to delete this transaction?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
+													<% end %>
+												</th>
 											<% end %>
-										</th>
-									<% end %>
-								<% end %>
+										<% end %>
 
-	          	</div>
+			          	</div>
 
-	          	<div class="col-md-1 column">
+			          	<div class="col-md-1 column">
 
-	          		<div>
-									<%= link_to 'Edit', edit_book_path ,class: "btn btn-default btn-block"%>	
-								</div>
+			          		<div>
+											<%= link_to 'Edit', edit_book_path ,class: "btn btn-default btn-block"%>	
+										</div>
 
-								<div>
-									<%= link_to "Delete", book_path(book), method: :delete,  data: {confirm: "Are you sure you want to delete this book?"}, class: "btn btn-default btn-block"%>
-								</div>
-	          	</div>
-	          </div>  	
-          <% end %>
+										<div>
+											<%= link_to "Delete", book_path(book), method: :delete,  data: {confirm: "Are you sure you want to delete this book?"}, class: "btn btn-default btn-block"%>
+										</div>
+			          	</div>
+			          </div>  	
+	          	<% end %>
+	          <% end %>
           <% end %>   
 					</div>
 
