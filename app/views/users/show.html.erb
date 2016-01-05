@@ -15,17 +15,20 @@
 					<blockquote>
 						<p>
 							<%= @user.username%>
+						</p>
 						<cite>Email :<%= @user.email %></cite></small>
 						<br>
 						<cite>Postal :<%= @user.postal %></cite></small>
-						</p>
+						
 					</blockquote>
 				</div>
 
 				<div class="col-md-2 column">
-					<button class="btn btn-default btn-block" type="button">Edit</button>
+				<% if current_user.id == @user.id %>
+					<%= button_to "Edit", edit_user_path, method: :get , class: "btn btn-default btn-block"%> 
 					<button class="btn btn-default btn-block" type="button">Message</button>
-					<button class="btn btn-default btn-block" type="button">Save</button>         
+					<button class="btn btn-default btn-block" type="button">Save</button>
+				<% end %>
 				</div>
 			</div>
 		</div>        		 				
@@ -46,15 +49,24 @@
 				<div class="tab-content">
 					
 					<div class="tab-pane active" id="panel-transactions">
-					  <div class="row clearfix">
-        			<div class="col-md-12 column">
-        				<hr>
-	              <% @user.books.each do |book|%>
-	               	<%= link_to book.name, book %>
-	               	<hr>
-	              <% end %>
-         			</div>
-            </div>
+						<% @user.books.each do |book|%>
+					  <div class="row clearfix top-buffer">        		        
+	          	<div class="col-md-2 column">
+	          		<%= image_tag book.image_url%>
+	          	</div>
+
+	          	<div class="col-md-5 column book-title">
+	          		<%= link_to book.name, book %>
+	          	</div>
+
+	          	<div class="col-md-5 column">
+
+	          		<%= book.book_transaction.status if book.book_transaction %>
+	          		<%= "No Request" unless book.book_transaction %>
+	          	</div>
+	          </div>
+    	
+            <% end %>   
 					</div>
 
 					<div class="tab-pane" id="panel-history">
