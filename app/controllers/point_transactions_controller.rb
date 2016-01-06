@@ -1,6 +1,7 @@
 class PointTransactionsController < ApplicationController
 
 	def create
+		byebug
 		@transaction = current_user.point_transactions.new
 		@transaction.points = params[:value]
 		result = Braintree::Transaction.sale(
