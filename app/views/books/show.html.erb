@@ -1,5 +1,28 @@
-<div class="content">
-	<h1>book show</h1>
+<h1>Your books</h1>
+
+
+
+<% 3.times do %>
+  <div class="col-md-4 col-sm-6 col-xss-12 hero-feature">
+    <div class="thumbnail">
+      <img src="http://placehold.it/800x500" alt="">
+     </div>
+    <div class="caption">
+        <h3>Feature Label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p>
+        		<%@books = Book.all%>
+            <% @books.each do |book|%>
+            	<% unless book.book_transaction %>
+            		<p><%=link_to book.name, book_path(book), class: "btn btn-primary" %></p>
+  						<% end %>
+  					<% end%>
+            <a href="" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+        </p>
+    </div>
+  </div>
+<% end %>
+
 
 <br>
 <%= image_tag(@book.image_url) %>
@@ -8,6 +31,8 @@ Book Name: <%= @book.name%>
 <br>
 Owner: <%= @book.user.id%>
 Description: <%= @book.description %>
+
+
 
 <% if current_user%>
 	<% unless @book.user.id == current_user.id%>
@@ -26,7 +51,9 @@ Description: <%= @book.description %>
 		</div>
 	<% end %>
 <% end %>
+<% end %>
 
 
+<h1>Comments?</h1>
 
 
