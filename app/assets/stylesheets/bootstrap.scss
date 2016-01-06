@@ -40,7 +40,7 @@ html {
 
 /* header */
 #header {
-	height: 110px;
+	height: 200px;
 	margin-bottom: 5px;
 	padding-bottom: 4px;
 	position: relative;
@@ -49,9 +49,9 @@ html {
 #header #logo {
 	position: absolute;
 	top: 0px;
-	left: 0px;
   padding-left:20px;
   padding-top: 10px;
+
 }
 #language {
 	position: absolute;
@@ -254,8 +254,8 @@ html {
 }
 #header .links {
 	position: absolute;
-	right: 0px;
-	bottom: 3px;
+  align: center;
+  bottom: 3px;
 	font-size: 10px;
 	padding-right: 20px;
 
@@ -5231,7 +5231,8 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-image: url('jumbo6.jpg');
+  background-size:cover;
 }
 .jumbotron h1,
 .jumbotron .h1 {
