@@ -1,11 +1,21 @@
-<div class="content">
-	<h1> Book Index </h1>
 
-	<% @books.each do |book|%>
-		
-		<% unless book.book_transaction %>
-			<p><%=link_to( book.name, book) %></p>
-		<% end %>
+<!-- Page Content -->
+<h1> <center>What can we help you with?</center></h1>
 
-	<% end%>
+<hr>
+<div class="container">
+<div class="row">
+
+
+  <!-- Page Features -->
+  <div class="col-md-3">
+		<%= render "categories" %>
+  </div>
+  <div class="col-md-9">
+		<%= render "book_list" %>
+  </div>
 </div>
+</div>
+
+    <!-- /.container -->
+

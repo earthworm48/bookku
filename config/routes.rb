@@ -13,6 +13,18 @@ Rails.application.routes.draw do
   # it won't overwrite the sign_in path
   resources :users, only: [:show, :edit, :update]
 
+  # MESSAGES:
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :mark_as_read
+      post :restore
+      post :reply
+    end
+    collection do
+      delete :empty_trash
+    end
+  end
+  resources :messages, only: [:new, :create]
 
   resources :book_transactions, only: [:create,:destroy]
   post '/successful_transaction', to: 'book_transactions#successful_transaction'
@@ -24,7 +36,7 @@ Rails.application.routes.draw do
   # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
-
+  get '/local_search', to: "books#local_search"
 
 
   # devise_scope :user do

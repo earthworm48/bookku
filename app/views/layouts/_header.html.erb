@@ -55,8 +55,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Bokku Bokku</a>
+                <a class="navbar-brand" href="#">Bookku Bookku</a>
             </div>
+
+
+    <%= form_for Book.new, method: :get , url: local_search_path, :html => {:class => "navbar-form navbar-left"}, role: "search" do |f| %>
+        <%= text_field_tag :term, params[:term],placeholder:"Search book name here" %>
+        <%= f.submit 'search', :class => 'btn btn-default' %>
+    <% end %>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -69,22 +76,33 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+
+                    <li>
+                        <%= link_to 'Your Conversations', conversations_path %>
+                    </li>
                 </ul>
 
             </div>
             <!-- /.navbar-collapse -->
+
         </div>
         <!-- /.container -->
     </nav>
 <div id="container">
 <div id="header">
-
     <div id="logo"><a href="/"><img src="/assets/logo.jpg" width="100" height="75" title="Bokku Bokku" alt="Logo"></a></div>
-    <div id="search">
-
+        <div id="cart">
+  <div class="heading">
+    <h4>Shopping Cart</h4>
+    <a><span id="cart-total">0 item(s) - MYR0.00</span></a></div>
+  <div class="content">
+        <div class="empty">Your shopping cart is empty!</div>
+      </div>
+</div>  <div id="search">
     <div class="button-search"></div>
     <input type="text" name="search" placeholder="Enter ISBN, Title, Keyword or Author" value="">
   </div>
+
   <div id="welcome">
       Welcome to BookUp!<br>  
       <% if current_user%>

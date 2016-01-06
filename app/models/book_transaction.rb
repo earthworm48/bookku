@@ -7,9 +7,6 @@ class BookTransaction < ActiveRecord::Base
   end
 
   def point_must_be_greater_than_book_price
-  	# byebug
     errors.add(:base, "You don't have enough points") if user.points < book.price 
-   	# @errors = errors
   end
-
 end
