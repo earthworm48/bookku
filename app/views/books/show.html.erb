@@ -1,28 +1,65 @@
-<h1>book show</h1>
+<h1>Your books</h1>
 
+
+
+<% 3.times do %>
+  <div class="col-md-4 col-sm-6 col-xss-12 hero-feature">
+    <div class="thumbnail">
+      <img src="http://placehold.it/800x500" alt="">
+     </div>
+    <div class="caption">
+        <h3>Feature Label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p>
+        		<%@books = Book.all%>
+            <% @books.each do |book|%>
+            	<% unless book.book_transaction %>
+            		<p><%=link_to book.name, book_path(book), class: "btn btn-primary" %></p>
+  						<% end %>
+  					<% end%>
+            <a href="" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+        </p>
+    </div>
+  </div>
+<% end %>
+
+
+<br>
+<%= image_tag(@book.image_url) %>
 <br>
 Book Name: <%= @book.name%>
 <br>
 Owner: <%= @book.user.id%>
-	<div>
-		<%= link_to 'Contact owner', new_message_path(to: @book.user.id), class: 'btn btn-default btn-sm' %>
-	</div>
 
-<% unless @book.user.id == current_user.id%>
-	<div>
-		<%= form_for @book_transaction do |f|%>
-			<%= f.hidden_field :book_id, :value => @book.id%>
-			<%= f.submit("Buy It",class: "btn btn-default btn-block") %>
-		<% end%>
-	</div>
-<% else %>
-	<div>
-		<%= link_to 'Edit Book', edit_book_path %>	
-	</div>
-	<div>
-		<%= link_to "Delete Book", book_path(@book), method: :delete  %>
-	</div>
+<div>
+	<%= link_to 'Contact owner', new_message_path(to: @book.user.id), class: 'btn btn-default btn-sm' %>
+</div>
+
+Description: <%= @book.description %>
+
+
+
+
+<% if current_user%>
+	<% unless @book.user.id == current_user.id%>
+		<div>
+			<%= form_for @book_transaction do |f|%>
+				<%= f.hidden_field :book_id, :value => @book.id%>
+				<%= f.submit("Buy It",class: "btn btn-default btn-block") %>
+			<% end%>
+		</div>
+	<% else %>
+		<div>
+			<%= link_to 'Edit Book', edit_book_path %>	
+		</div>
+		<div>
+			<%= link_to "Delete Book", book_path(@book), method: :delete  %>
+		</div>
+	<% end %>
+<% end %>
 <% end %>
 
 
-<h1>Comments</h1>
+<h1>Comments?</h1>
+
+

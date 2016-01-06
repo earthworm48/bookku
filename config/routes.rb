@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
-
   resources :point_transactions, only: [:new, :create]
-  resources :books
+
   # FB Sign out + devise sign out
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
@@ -29,10 +28,15 @@ Rails.application.routes.draw do
 
   resources :book_transactions, only: [:create,:destroy]
   post '/successful_transaction', to: 'book_transactions#successful_transaction'
+  get '/search', to: 'books#search'
+  post '/form', to: 'books#form'
+
+  resources :books
+  # resources :comments, only: [:new, :create]
   # do
   # delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
-
+  get '/local_search', to: "books#local_search"
 
 
   # devise_scope :user do
