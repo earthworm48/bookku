@@ -8,6 +8,8 @@ class BookTransactionsController < ApplicationController
     if @book_transaction.save
       @book_transaction.user.points -= @book_transaction.book.price
       @book_transaction.user.save!
+    else
+      @errors = @book_transaction.errors
     end
     # byebug
     redirect_to current_user
