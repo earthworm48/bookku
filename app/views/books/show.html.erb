@@ -30,7 +30,13 @@
 Book Name: <%= @book.name%>
 <br>
 Owner: <%= @book.user.id%>
+
+<div>
+	<%= link_to 'Contact owner', new_message_path(to: @book.user.id), class: 'btn btn-default btn-sm' %>
+</div>
+
 Description: <%= @book.description %>
+
 
 
 

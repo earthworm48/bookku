@@ -19,11 +19,9 @@ class BooksController < ApplicationController
   end
 
   def create
-    # byebug
     x = params[:book][:isbn].to_i
     books = GoogleBooks.search("isbn: #{x}")
     book = books.first
-    # byebug
 		@book = current_user.books.new(name: book.title, description: book.description, isbn: book.isbn.to_s, image_url: book.image_link) 
 		
     @book.save!
@@ -64,7 +62,6 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
-    # byebug
 		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn)
 	end
 
