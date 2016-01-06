@@ -19,6 +19,5 @@
 
 
 $('#myModal').on('shown.bs.modal', function () {
-	debugger
   $('#myInput').focus()
 })
