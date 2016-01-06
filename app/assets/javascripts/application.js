@@ -17,3 +17,6 @@
 //= require jquery
 //= require jquery_ujs
 
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
