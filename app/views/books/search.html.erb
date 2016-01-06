@@ -1,18 +1,22 @@
-<h1>Search Result</h1>
+<div class="container">
+	<h1>Search Result</h1>
 
+	<div class="row">
+		<% @books.each do |book| %>
+			<div class="book-column col-md-4">
+				<%= image_tag(book.image_link(:zoom => 5)) %>
+				<br>
+				<strong><%= book.title%></strong>
+				<br>
+				<i>by <%= book.authors%></i>
+				<br>
 
-<% @books.each do |book| %>
+				<%= form_for(Book.new, :url => form_path) do |f|%>
+					<%= f.hidden_field :isbn, value: book.isbn %>
+					<%= f.submit("Add This Book", class: "btn btn-default") %>
+				<% end %>
+			</div>	
+		<% end %>
+	</div>
 
-	<%= image_tag(book.image_link(:zoom => 5)) %>
-	<%= book.title%>
-
-	<%= form_for(Book.new, :url => form_path) do |f|%>
-		<%= f.hidden_field :isbn, value: book.isbn %>
-	<%= f.submit("Choose This Book")%>
-	
-	<br>		
-	
-	<% end %>
-	
-<% end %>
-
+</div>
