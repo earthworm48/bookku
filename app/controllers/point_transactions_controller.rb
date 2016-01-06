@@ -1,5 +1,8 @@
 class PointTransactionsController < ApplicationController
-
+	def new
+		@client_token = generate_client_token
+	end
+	
 	def create
 		@transaction = current_user.point_transactions.new
 		@transaction.points = params[:value]
