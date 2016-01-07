@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     books = GoogleBooks.search("isbn: #{x}")
     book = books.first
 		@book = current_user.books.new(name: book.title, description: book.description, isbn: book.isbn.to_s, image_url: book.image_link) 
-		byebug
+		# byebug
     @book.save!
 		@book.update!(book_params)
 
@@ -59,7 +59,7 @@ class BooksController < ApplicationController
   end
 
   def update
-
+    byebug
   	@book = Book.find(params[:id])
 		if @book.update(book_params)
 			
