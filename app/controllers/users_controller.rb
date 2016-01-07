@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 		if @user.update(user_params)
 			redirect_to @user
 		else
-			render "edit"
+			redirect_to @user, alert: "Wrong edit"
 		end
 	end
 
