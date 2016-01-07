@@ -5,11 +5,16 @@
   *= require font-awesome
   *= require books_new
   *= require books_search
+  *= require books_edit
   *= require point_transactions_new
   *= require book_3d_cover
 */
 
 @import "bootstrap";
+
+body {
+  font-family: sans-serif,"Helvetica Neue",Helvetica,Arial;
+}
 
 .messages {
   max-height: 400px;
@@ -25,5 +30,8 @@
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 5px 5px 20px #333;
+}
 
+.media-left {
+  width:10%;
 }

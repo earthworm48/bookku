@@ -1,0 +1,38 @@
+<div id="editModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit User Profile</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for :user, url: user_path(@user), method: :patch do |f| %>
+			<div class="form-group">
+			<%= f.label :username %>
+			<br>
+			<%= f.text_field :username, :required => true%>
+			</div>
+
+			<div class="form-group">
+			<%= f.label :postal %>
+			<br>
+			<%= f.text_field :postal, :required => true %>
+			</div>
+
+			<div class="form-group">
+			<%= f.label :email %>
+			<br>
+			<%= f.text_field :email, :required => true%>
+			</div>
+      </div>
+      <div class="modal-footer">
+      	<%= f.submit("Save the info", class: "btn btn-default") %>
+      	<%end%>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
