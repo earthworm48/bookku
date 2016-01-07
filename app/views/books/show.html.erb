@@ -34,26 +34,41 @@
 					</div> <!-- col 4 -->
 
 		<div class="col-md-8">
-				<h2><%= @book.name%><small> <%= @book.subtitle%> </small></h2>	
-				<h3><small>by <strong><%=@book.author%></strong></small></h3> 		
+				<h2><%= @book.name%><%if @book.subtitle.present?%>,<small> <%= @book.subtitle%><%end%> </small></h2>
+				<%if @book.author%><h3><small>by <strong><%=@book.author%></strong></small></h3><%end%>	
 			<div class="row">
 				<div class="col-md-7">
 				<hr>
+				<%if @book.section.present?%>
 				<p><strong>Category:</strong> <%=@book.section%></p>
+				<%end%>
+				<%if @book.published_date.present?%>
 				<p><strong>Published by:</strong> <%=@book.publisher%> in <%=@book.published_date%></p>
+				<%end%>
+				<%if @book.pages.present?%>
 				<p><strong>Pages:</strong> <%=@book.pages%></p>
+				<%end%>
+				<%if @book.language.present?%>
 				<p><strong>Language:</strong> <%=@book.language.upcase%></p>
+				<%end%>
+				<%if @book.rating_count.present?%>
 				<p><strong>Rating:</strong> <%="#{@book.rating_average} from #{@book.rating_count}"%></p>
+				<%end%>
 				<hr>
 				<%= link_to "Look inside", @book.preview_link, class: "btn btn-warning" %>
 				</div>
 				<div class="col-md-5 box-book">
 					<h3 class="text-center">GET THIS BOOK</h3><br>
-					<p>Owner: <strong><%=@book.user.username%></strong> | <em><%= link_to 'Contact owner', new_message_path(to: @book.user.id), class: "" %></em></p>
+					<p>Owner: <strong><%=@book.user.username%></strong> | <em><%= link_to 'Send a message', new_message_path(to: @book.user.id), class: "" %></em></p>
 					<p>In location: <%=@book.prefered_location%></p>
 					<p>Condition: <%= @book.condition%></p>
 					<br>
-					<button class="btn btn-primary center-block">Exchange for <%=@book.price%></button><br>
+					<%= form_for @book_transaction do |f|%>
+            <%= f.hidden_field :book_id, :value => @book.id%>
+            <%= f.submit("Buy It",class: "btn btn-default btn-block") %>
+          <% end%>
+
+					<a href="/book_transactions/15"><button class="btn btn-primary center-block" id="addBookDialog">Exchange for <%=@book.price%> points</button><br></a>
 					<a href="#"><em>Learn more about points</em></a>
 				</div>
 			</div>	
