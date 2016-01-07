@@ -23,9 +23,11 @@ class BooksController < ApplicationController
     books = GoogleBooks.search("isbn: #{x}")
     book = books.first
 		@book = current_user.books.new(name: book.title, description: book.description, isbn: book.isbn.to_s, image_url: book.image_link) 
-		
+		# byebug
     @book.save!
 		@book.update!(book_params)
+    @book.price = calculate_price(@book.categories,@book.condition)
+    @book.update!
     redirect_to @book
   end
 
@@ -39,11 +41,13 @@ class BooksController < ApplicationController
   end
 
   def update
+  	@book = Book.find(params[:book][:id])
+    # byebug
+		if @book.update!(book_params)
 
-  	@book = Book.find(params[:id])
-		if @book.update(book_params)
-			
-			redirect_to @book
+			@book.update!(price: calculate_price(@book.categories,@book.condition))
+      
+      redirect_to @book
 		else
 			render :edit
 		end
@@ -64,5 +68,28 @@ class BooksController < ApplicationController
 	def book_params
 		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn)
 	end
+
+  def calculate_price(categories,condition)
+    case categories
+    when 'Primary School Textbooks'
+      x = 2
+    when 'Secondary School Textbooks'
+      x = 3
+    when 'University Textbooks'
+      x = 5
+    when 'Non-Textbooks'
+      x = 1
+    end
+
+    case condition
+    when 'Brand new'
+      price = x
+    when 'OK'
+      price = x * 2 / 3
+    when 'Looks bad'
+      price = x * 1 / 3
+    end
+    price
+  end
 
 end

@@ -11,11 +11,13 @@
 // about supported directives.
 //
 
+
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+
 
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
