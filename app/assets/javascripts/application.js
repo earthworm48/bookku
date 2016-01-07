@@ -20,3 +20,11 @@
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 })
+
+
+// Carousel Auto-Cycle
+  $(document).ready(function() {
+    $('.carousel').carousel({
+      interval: 6000
+    })
+  });

@@ -17,18 +17,18 @@
 <body>
 
 	<%= render 'layouts/header' %>
-	<div class="container">
+  <br>
+  <br>
 		<% if notice.present? %>
-	  		<div class="alert alert-success"><%= notice %></div>
+	  		<div class="alert alert-success alert-dismissible"><%= notice %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
 	  	<% end %>
 	  	<% if alert.present? %>
-	  		<div class="alert alert-danger"><%= alert %></div>
+	  		<div class="alert alert-danger alert-dismissible"><%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
 	  	<% end %>
-  </div>
 
 
-<h3>Buy Points</h3>
-<%=link_to "10", new_point_transaction_path(value: 10)%>, <%=link_to "20", new_point_transaction_path(value: 20)%>, <%=link_to "30", new_point_transaction_path(value: 30)%><br>
 
 <%= yield %>
 
