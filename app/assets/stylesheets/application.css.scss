@@ -5,14 +5,23 @@
   *= require font-awesome
   *= require books_new
   *= require books_search
+  *= require books_edit
   *= require point_transactions_new
 */
 
 @import "bootstrap";
+
+body {
+  font-family: sans-serif,"Helvetica Neue",Helvetica,Arial;
+}
 
 .messages {
   max-height: 400px;
   overflow-y: auto;
   margin-bottom: 1em;
   margin-top: 1em;
+}
+
+.media-left {
+  width:10%;
 }
