@@ -27,7 +27,7 @@ class BooksController < ApplicationController
     @book.save!
 		@book.update!(book_params)
     @book.price = calculate_price(@book.categories,@book.condition)
-    @book.update!
+    # @book.update!
     redirect_to @book
   end
 
