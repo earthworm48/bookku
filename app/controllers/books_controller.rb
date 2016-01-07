@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     books = GoogleBooks.search("isbn: #{x}")
     book = books.first
 		@book = current_user.books.new(name: book.title, description: book.description, isbn: book.isbn.to_s, image_url: book.image_link) 
-		
+		byebug
     @book.save!
 		@book.update!(book_params)
 
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     when 'Non-Textbooks'
       x = 1
     end
-    
+
     case @book.condition
     when 'Brand new'
       @book.price = x
