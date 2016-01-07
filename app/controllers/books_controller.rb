@@ -22,9 +22,8 @@ class BooksController < ApplicationController
     x = params[:book][:isbn].to_i
     books = GoogleBooks.search("isbn: #{x}")
     book = books.first
-    byebug
-		@book = current_user.books.new(name: book.title, description: book.description, isbn: book.isbn.to_s, image_url: book.image_link) 
-		
+		@book = current_user.books.new(name: book.titles_array[0], subtitle: book.titles_array[1], description: book.description, isbn: book.isbn.to_s, image_url: book.image_link, big_image: book.image_link(zoom: 2), author: book.authors, published_date: book.published_date, publisher: book.publisher, pages: book.page_count, language: book.language, rating_average: book.average_rating, rating_count: book.ratings_count, preview_link: book.preview_link, section: book.categories,  
+)
     @book.save!
 		@book.update!(book_params)
 
@@ -38,7 +37,6 @@ class BooksController < ApplicationController
     when 'Non-Textbooks'
       x = 1
     end
-    byebug
     case @book.condition
     when 'Brand new'
       @book.price = x
@@ -47,7 +45,6 @@ class BooksController < ApplicationController
     when 'Looks bad'
       @book.price = x * 1 / 3
     end
-    byebug
     redirect_to @book
   end
 
@@ -84,7 +81,9 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
-		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn)
+		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn, :subtitle)
 	end
+
+
 
 end

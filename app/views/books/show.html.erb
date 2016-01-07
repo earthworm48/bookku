@@ -1,35 +1,72 @@
 
+<div class="container">
+	<div class="row">
+	
+					<div class="col-md-4">
+					<br>
+								<div class="books">
+								  <div class="book">
+								    <%= image_tag(@book.big_image) %>
+								  </div>
+								</div>
+								
+					
 
-	<br>
-	<%= image_tag(@book.image_url) %>
-	<br>
-	Book Name: <%= @book.name%>
-	<br>
-	Owner: <%= @book.user.id%>
-	Description: <%= @book.description %>
+						<% if current_user%>
+							<% unless @book.user.id == current_user.id%>
+								<div>
+									<%= form_for @book_transaction do |f|%>
+										<%= f.hidden_field :book_id, :value => @book.id%>
+										<%= f.submit("Buy It",class: "btn btn-default btn-block") %>
+									<% end%>
+								</div>
+							<% else %>
+								<div>
+									<%= link_to 'Edit Book', edit_book_path %>	
+								</div>
+								<div>
+									<%= link_to "Delete Book", book_path(@book), method: :delete  %>
+								</div>
+							<% end %>
+						<% end %>
 
-	<% if current_user%>
-		<% unless @book.user.id == current_user.id%>
-			<div>
-				<%= form_for @book_transaction do |f|%>
-					<%= f.hidden_field :book_id, :value => @book.id%>
-					<%= f.submit("Buy It",class: "btn btn-default btn-block") %>
-				<% end%>
-			</div>
-		<% else %>
-			<div>
-				<%= link_to 'Edit Book', edit_book_path %>	
-			</div>
-			<div>
-				<%= link_to "Delete Book", book_path(@book), method: :delete  %>
-			</div>
-		<% end %>
-	<% end %>
+
+					</div> <!-- col 4 -->
+
+		<div class="col-md-8">
+				<h2><%= @book.name%><small> <%= @book.subtitle%> </small></h2>	
+				<h3><small>by <strong><%=@book.author%></strong></small></h3> 		
+			<div class="row">
+				<div class="col-md-7">
+				<hr>
+				<p><strong>Category:</strong> <%=@book.section%></p>
+				<p><strong>Published by:</strong> <%=@book.publisher%> in <%=@book.published_date%></p>
+				<p><strong>Pages:</strong> <%=@book.pages%></p>
+				<p><strong>Language:</strong> <%=@book.language.upcase%></p>
+				<p><strong>Rating:</strong> <%="#{@book.rating_average} from #{@book.rating_count}"%></p>
+				<hr>
+				<%= link_to "Look inside", @book.preview_link, class: "btn btn-warning" %>
+				</div>
+				<div class="col-md-5 box-book">
+					<h3 class="text-center">GET THIS BOOK</h3><br>
+					<p>Owner: <strong><%=@book.user.username%></strong> | <em><%= link_to 'Contact owner', new_message_path(to: @book.user.id), class: "" %></em></p>
+					<p>In location: <%=@book.prefered_location%></p>
+					<p>Condition: <%= @book.condition%></p>
+					<br>
+					<button class="btn btn-primary center-block">Exchange for <%=@book.price%></button><br>
+					<a href="#"><em>Learn more about points</em></a>
+				</div>
+			</div>	
+		<div>
+	</div>
 </div>
 
-<div>
-	<%= link_to 'Contact owner', new_message_path(to: @book.user.id), class: 'btn btn-default btn-sm' %>
-</div>
+	<div class="row">	
+		<div class="col-md-8">
+			<br>
+			<p><strong>Description:</strong> <%= @book.description %></p>
+		</div>
+	</div>
 
 
 

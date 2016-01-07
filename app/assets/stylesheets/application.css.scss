@@ -6,6 +6,7 @@
   *= require books_new
   *= require books_search
   *= require point_transactions_new
+  *= require book_3d_cover
 */
 
 @import "bootstrap";
@@ -15,4 +16,14 @@
   overflow-y: auto;
   margin-bottom: 1em;
   margin-top: 1em;
+}
+
+
+
+.box-book {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px #333;
+
 }

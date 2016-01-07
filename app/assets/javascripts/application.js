@@ -16,8 +16,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require book_cover
 
-
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
