@@ -1,0 +1,40 @@
+
+
+<h1>Edit User</h1>
+<%= form_for :user, url: user_path(@user), method: :patch do |f| %>
+<%= f.label :username %>
+<%= f.text_field :username %>
+
+<br>
+
+<%= f.label :postal %>
+<%= f.text_field :postal %>
+<br>
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<br>
+
+<%= f.submit %>
+<%end%>
+<br>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -26,6 +26,7 @@
 				<div class="col-md-2 column">
 				<% if current_user == @user %>
 					<%= button_to "Edit", edit_user_path, method: :get , class: "btn btn-default btn-block"%> 
+					<a data-toggle="modal" data-points="30" class="btn btn-default btn-block" href="#addPointDialog"><i class="fa fa-hand-o-right hided-icon big"></i> Edit </a>
 					<button class="btn btn-default btn-block" type="button">Message</button>
 					<button class="btn btn-default btn-block" type="button">Save</button>
 				<% end %>
