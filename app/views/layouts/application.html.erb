@@ -9,7 +9,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  
+  <link rel="stylesheet" type="text/css" href="http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" />
+  <script type="text/javascript" src="http://www.prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js"></script>
 
   <!-- BRAINTREE -->
   <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
@@ -27,16 +28,9 @@
 	  	<% end %>
   </div>
 
+  <%= yield %>
 
-<h3>Buy Points</h3>
-<%=link_to "10", new_point_transaction_path(value: 10)%>, <%=link_to "20", new_point_transaction_path(value: 20)%>, <%=link_to "30", new_point_transaction_path(value: 30)%><br>
-
-<%= yield %>
-
-<%= render 'layouts/footer' %>
-
-
-
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>
