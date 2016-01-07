@@ -22,6 +22,7 @@ class BooksController < ApplicationController
     x = params[:book][:isbn].to_i
     books = GoogleBooks.search("isbn: #{x}")
     book = books.first
+    byebug
 		@book = current_user.books.new(name: book.title, description: book.description, isbn: book.isbn.to_s, image_url: book.image_link) 
 		
     @book.save!
