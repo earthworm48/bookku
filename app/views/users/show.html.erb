@@ -1,27 +1,28 @@
-<div class="container user-profile">
+<div class="content">
+	<div class="container user-profile">
 
-	<div class="panel panel-default">
-		<div class="panel-heading" style="text-align: right; font-size: 30px">
-		<strong>Points: <%= @user.points%></strong>
-		</div>
-		<div class="panel-body">
-	    <div class="row clearfix">
+		<div class="panel panel-default">
+			<div class="panel-heading" style="text-align: right; font-size: 30px">
+			<strong>Points: <%= @user.points%></strong>
+			</div>
+			<div class="panel-body">
+		    <div class="row clearfix">
 
-				<div class="col-md-2 column">
-					<img class="img-thumbnail" alt="140x140" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTHV68gr6LcqQplcCJcbKdUTRiK_0_QEwuHImxAcrpTDBlfLOPDELU3PxcB" />
-				</div>
+					<div class="col-md-2 column">
+						<img class="img-thumbnail" alt="140x140" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTHV68gr6LcqQplcCJcbKdUTRiK_0_QEwuHImxAcrpTDBlfLOPDELU3PxcB" />
+					</div>
 
-				<div class="col-md-8 column">
-					<blockquote>
-						<p>
-							<%= @user.username%>
-						</p>
-						<cite>Email :<%= @user.email %></cite></small>
-						<br>
-						<cite>Postal :<%= @user.postal %></cite></small>
-						
-					</blockquote>
-				</div>
+					<div class="col-md-8 column">
+						<blockquote>
+							<p>
+								<%= @user.username%>
+							</p>
+							<cite>Email :<%= @user.email %></cite></small>
+							<br>
+							<cite>Postal :<%= @user.postal %></cite></small>
+							
+						</blockquote>
+					</div>
 
 				<div class="col-md-2 column">
 				<% if current_user == @user %>
@@ -30,10 +31,10 @@
 					<button class="btn btn-default btn-block" type="button">Message</button>
 					<button class="btn btn-default btn-block" type="button">Save</button>
 				<% end %>
+
 				</div>
-			</div>
-		</div>        		 				
-	</div>
+			</div>        		 				
+		</div>
 
 
 	<div class="row clearfix">
@@ -133,21 +134,21 @@
 												<%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
 												<%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
 													<%= f.submit("Book Received", data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
+
 												<% end %>
-											</th>
-											<% end %>
-										</tr>
-									</tbody>
-									<% end %>
-									<% end %>
-								</table>
+											</tr>
+										</tbody>
+										<% end %>
+										<% end %>
+									</table>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				
 			</div>
-			
 		</div>
 	</div>
 </div>

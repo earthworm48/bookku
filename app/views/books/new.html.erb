@@ -1,9 +1,13 @@
 
-<div class="container">
-   <%= form_for Book.new, method: :get,:url => search_path, role: "search" do |f| %>
-      <%= text_field_tag :term, params[:term], size: 30,  placeholder:"Search the book you want to add" %>
-      <%= f.submit 'search', :class => 'btn btn-default' %>
-   <% end %>
+<div class="content">
+	<center><h1>Search your book in googlebook</h1></center>
 
+	   <%= form_for Book.new, method: :get,:url => search_path, role: "search" do |f| %>
+	      <%= text_field_tag :term, params[:term], placeholder:"Search the book" %>
+	      <%= f.submit 'search', :class => 'btn btn-default' %>
+	   <% end %>
 </div>
+
+
+
 
