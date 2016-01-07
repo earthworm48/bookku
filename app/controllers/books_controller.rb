@@ -26,6 +26,27 @@ class BooksController < ApplicationController
 		
     @book.save!
 		@book.update!(book_params)
+
+    case @book.categories
+    when 'Primary School Textbooks'
+      x = 2
+    when 'Secondary School Textbooks'
+      x = 3
+    when 'University Textbooks'
+      x = 5
+    when 'Non-Textbooks'
+      x = 1
+    end
+    byebug
+    case @book.condition
+    when 'Brand new'
+      @book.price = x
+    when 'OK'
+      @book.price = x * 2 / 3
+    when 'Looks bad'
+      @book.price = x * 1 / 3
+    end
+    byebug
     redirect_to @book
   end
 

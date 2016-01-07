@@ -1,18 +1,62 @@
-<h1>Search Result</h1>
+<div class="container">
+	<h1>Search Result</h1>
 
+	<div class="row">
+		<% @books.each do |book| %>
+			<div class="book-column col-md-4">
+				<%= image_tag(book.image_link(:zoom => 5)) %>
+				<br>
+				<strong><%= book.title%></strong>
+				<br>
+				<i>by <%= book.authors%></i>
+				<br>
+				
+				<a data-toggle="modal" data-id="<%= book.isbn%>" title="Add this item" class="open-AddBookDialog btn btn-default" href="#addBookDialog">Add this book</a>
 
-<% @books.each do |book| %>
+			</div>	
+		<% end %>
+	</div>
+</div>
 
-	<%= image_tag(book.image_link(:zoom => 5)) %>
-	<%= book.title%>
+<div id="addBookDialog" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-	<%= form_for(Book.new, :url => form_path) do |f|%>
-		<%= f.hidden_field :isbn, value: book.isbn %>
-	<%= f.submit("Choose This Book")%>
-	
-	<br>		
-	
-	<% end %>
-	
-<% end %>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add a new book</h4>
+      </div>
+      <div class="modal-body">
+					<%= form_for Book.new , html: {multipart: true} do |form| %>
+					  
+					  <%= form.hidden_field :isbn %>
 
+					   <div class="form-group">
+					    <%=form.label :categories%>
+					    <br>
+					    <center><%= form.select :categories, ['Primary School Textbooks', 'Secondary School Textbooks','University Textbooks','Non-Textbooks'],  {}, {required: 'true', autofocus: 'true', class: 'form-control custom'} %></center>
+					  </div> 
+
+					  <div class="form-group">
+					    <%=form.label :condition%>
+					    <br>
+					    <center><%= form.select :condition, ['Brand new', 'OK','Looks bad'],  {}, {required: 'true', autofocus: 'true', class: 'form-control custom'} %>
+					  </div>
+
+					  <div class="form-group">
+					    <%=form.label :prefered_location%>
+					    <br>
+					    <%= form.text_field :prefered_location , :required => true%>
+					  </div>       
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+				    <%= form.submit("Done",class:"btn btn-default btn-block") %>
+			  </div>
+			  <% end%>
+      </div>
+    </div>
+
+  </div>
+</div>
