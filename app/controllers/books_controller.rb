@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     when 'Non-Textbooks'
       x = 1
     end
-    byebug
+    
     case @book.condition
     when 'Brand new'
       @book.price = x
@@ -46,7 +46,6 @@ class BooksController < ApplicationController
     when 'Looks bad'
       @book.price = x * 1 / 3
     end
-    byebug
     redirect_to @book
   end
 
