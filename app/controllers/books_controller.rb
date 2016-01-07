@@ -27,7 +27,8 @@ class BooksController < ApplicationController
     @book.save!
 		@book.update!(book_params)
     @book.price = calculate_price(@book.categories,@book.condition)
-    @book.update!
+    # @book.update!
+    # byebug
     redirect_to @book
   end
 
@@ -69,7 +70,7 @@ class BooksController < ApplicationController
 		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn)
 	end
 
-  def calculate_price(categories,condition)
+  def calculate_price(categories,book_condition)
     case categories
     when 'Primary School Textbooks'
       x = 2
@@ -80,16 +81,19 @@ class BooksController < ApplicationController
     when 'Non-Textbooks'
       x = 1
     end
-
-    case condition
+    # byebug
+    case book_condition
     when 'Brand new'
       price = x
     when 'OK'
       price = x * 2 / 3
+      # byebug
     when 'Looks bad'
       price = x * 1 / 3
     end
-    price
+    
+    return 1 if price == 0
+    # byebug
   end
 
 end
