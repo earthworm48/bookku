@@ -40,11 +40,15 @@
       <div class="col-md-1 column">
         <% if book_transaction.book.user == current_user %>
           <div>
-            <%= link_to 'Edit', edit_book_path(book_transaction.book) ,class: "btn btn-default btn-block"%> 
+            <%= link_to 'Edit', edit_book_path(book_transaction.book) ,class: "btn btn-default btn-block" do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %> 
           </div>
 
           <div>
-            <%= link_to "Delete", book_path(book_transaction.book), method: :delete,  data: {confirm: "Are you sure you want to delete this book?"}, class: "btn btn-default btn-block"%>
+            <%= link_to "Delete", book_path(book_transaction.book), method: :delete,  data: {confirm: "Are you sure you want to delete this book?"}, class: "btn btn-default btn-block" do %>
+              <span class="glyphicon glyphicon-trash">
+            <% end %>
           </div>
         <% end %>
       </div>
