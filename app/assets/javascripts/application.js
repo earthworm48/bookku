@@ -11,12 +11,11 @@
 // about supported directives.
 //
 
-
-//= require bootstrap
+//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require jquery
-//= require jquery_ujs
+
+
 
 
 $('#myModal').on('shown.bs.modal', function () {
