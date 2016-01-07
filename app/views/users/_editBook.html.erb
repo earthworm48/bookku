@@ -9,7 +9,7 @@
       <div class="modal-body">
           <%= form_for book , url: {action: "update", :controller=>"books"} do |form| %>
             
-            <%= form.hidden_field :isbn %>
+            <%= form.hidden_field :id, :value => book.id%>
 
              <div class="form-group">
               <%=form.label :categories%>

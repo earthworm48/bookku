@@ -26,8 +26,8 @@ class BooksController < ApplicationController
 		# byebug
     @book.save!
 		@book.update!(book_params)
-    calculate_price(@book.categories,@book.condition)
-    byebug
+    @book.price = calculate_price(@book.categories,@book.condition)
+    # byebug
     redirect_to @book
   end
 
@@ -41,9 +41,11 @@ class BooksController < ApplicationController
   end
 
   def update
-  	@book = Book.find(params[:id])
+  	@book = Book.find(params[:book][:id])
+    # byebug
 		if @book.update(book_params)
-			calculate_price(@book.categories,@book.condition)
+      # byebug
+			@book.price = calculate_price(@book.categories,@book.condition)
 			redirect_to @book
 		else
 			render :edit
