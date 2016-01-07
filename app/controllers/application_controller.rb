@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
 
 
 	# GENERATE TOKEN FOR BRAINTREE
-	def index
-  	# @client_token = generate_client_token
-  	@transaction = PointTransaction.new
-  end
+	# def index
+ #  	# @client_token = generate_client_token
+ #  	# @transaction = PointTransaction.new
+ #  end
 
 
   def generate_client_token

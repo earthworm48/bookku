@@ -1,13 +1,15 @@
   
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div class="modal fade" id="addPointDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-        <%=form_for point_transactions_path, url: point_transactions_path do |f| %>
-          <div id="payment-form"></div>
-          <br>
-          <%= hidden_field_tag 'value', params[:value] %>
-        <%= f.submit 'Submit', class: 'btn btn-success btn-lg' %>
-        <%end%>
+        <div class="modal-body">
+          <%=form_for @point_transaction , url: point_transactions_path do |f| %>
+            <div id="payment-form"></div>
+            <br>
+             <%= f.hidden_field :points %>
+          <%= f.submit 'Submit', class: 'btn btn-success btn-lg' %>
+          <%end%>
+        </div>
     </div>
   </div>
 </div>

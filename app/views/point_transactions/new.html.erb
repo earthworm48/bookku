@@ -1,6 +1,8 @@
 <center><div>
-	<button type="button" class="btn btn-default" data-amount="10" data-toggle="modal" data-target=".bs-example-modal-sm" id="process-payment">10</button>
-	<button type="button" class="btn btn-default" data-amount="20" data-toggle="modal" data-target=".bs-example-modal-sm" id="process-payment">20</button>
-	<button type="button" class="btn btn-default" data-amount="30" data-toggle="modal" data-target=".bs-example-modal-sm" id="process-payment">30</button>
+	<a data-toggle="modal" data-points="10" class="open-AddPointDialog btn btn-primary" href="#addPointDialog">10</a>
+	<a data-toggle="modal" data-points="20" class="open-AddPointDialog btn btn-primary" href="#addPointDialog">20</a>
+	<a data-toggle="modal" data-points="30" class="open-AddPointDialog btn btn-primary" href="#addPointDialog">30</a>
+
 </div></center>
         <%= render 'payment'%>
+
