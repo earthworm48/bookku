@@ -1,0 +1,26 @@
+.thumbnail { 
+  min-height:50px; 
+  height:100%; 
+}
+
+.thumbnail a {
+  font-weight:bold;
+  font-size:15px;
+  color:black;
+  font-family: serif, "Times New Roman";
+}
+
+#book-index-title{
+  margin-left:10px;
+}
+
+#book-index-category{
+  margin-left:15px;
+  margin-bottom:10px;
+  font-weight:bold;
+  font-size:20px;
+}
+
+.list-group a{
+  color:black;
+}

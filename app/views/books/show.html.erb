@@ -1,3 +1,32 @@
+<div class="modal fade alert" id="contact_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+              <h3 class="modal-title" id="lineModalLabel">Start a conversation</h3>
+          </div>
+          <div class="modal-body">
+			<%= form_tag messages_path, method: :post do %>
+			  <div class="form-group">
+			    <%= label_tag 'message[subject]', 'Subject' %>
+			    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
+			  </div>
+
+			  <div class="form-group">
+			    <%= label_tag 'message[body]', 'Message' %>
+			    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+			  </div>
+
+			  <%=hidden_field_tag 'recipients', @chosen_recipient %>
+
+			  <%= submit_tag 'Send', class: 'btn btn-primary' %>
+			<% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
 
 <div class="container">
 	<div class="row">
@@ -58,7 +87,7 @@
 			<p>In location: <%=@book.prefered_location%></p>
 			<p>Condition: <%= @book.condition%></p>
 			<br>
-			<a href="/book_transactions/15"><button class="btn btn-danger center-block" id="addBookDialog">Exchange for <%=@book.price%> points</button><br></a>
+			<a href="/book_transactions/15"><button class="btn btn-primary center-block" id="addBookDialog">Exchange for <%=@book.price%> points</button><br></a>
 			<a href="#"><em>Learn more about points</em></a>
 		</div>  <!-- col 4 -->
 	</div>
