@@ -26,7 +26,7 @@
 
       <div class="col-md-1 column">
         <% if book.book_transaction %>
-          <% if current_user = @user && book.book_transaction.status == 'pending' %>
+          <% if current_user == @user && book.book_transaction.status == 'pending' %>
             <th>
               <%= link_to("Delete", book_transaction_path(book_transaction), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-default btn-block") if @user.id == book_transaction.user_id%>
               <%= form_for(book_transaction, :url =>  successful_transaction_path(book_transaction), :html => { :method => :post }) do |f| %>
@@ -55,3 +55,4 @@
     </div>    
   <% end %>
 <% end %>   
+  

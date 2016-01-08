@@ -5,8 +5,9 @@
       <div class="col-md-4 col-sm-6 col-xss-12 hero-feature">
         <div class="thumbnail">
           <center>
+          <br>
             <div class="book">
-                <%= image_tag book.image_url%>
+                <a href="/books/<%=book.id%>"><%= image_tag book.image_url%></a>
             </div>
           </center>
           <br>
