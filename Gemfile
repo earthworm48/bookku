@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
-gem 'grape', '>= 0.10.0'
+# gem 'grape', '>= 0.10.0'
 # Pagination
 gem "will_paginate"
 gem "will_paginate-bootstrap"
 
-gem 'api-pagination'
+# gem 'api-pagination'
 # Messages
 gem 'mailboxer'
 # Braintree
