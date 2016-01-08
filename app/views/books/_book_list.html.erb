@@ -38,6 +38,6 @@
 
 <center>
   <ul class="pagination">
-    <%= will_paginate @books %>
+    <%= will_paginate @books , renderer: BootstrapPagination::Rails%>
   </ul>
 </center>
