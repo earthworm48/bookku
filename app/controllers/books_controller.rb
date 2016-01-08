@@ -38,6 +38,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    # byebug
   	@book = Book.find(params[:id])
     @book_transaction = BookTransaction.new
   end
@@ -71,7 +72,7 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
-		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn, :subtitle)
+		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn, :subtitle, :big_image)
 	end
 
   def calculate_price(categories,book_condition)
