@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = GoogleBooks.search(params[:term]).paginate(:page => params[:page], :per_page => 15)
+    @books = GoogleBooks.search(params[:term])
     render 'search' 
   end
   
