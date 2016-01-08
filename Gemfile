@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'rails', '4.2.5'
+# gem 'grape', '>= 0.10.0'
 # Pagination
 gem "will_paginate"
 gem "will_paginate-bootstrap"
+
+# gem 'api-pagination'
 # Messages
 gem 'mailboxer'
 # Braintree
@@ -17,7 +21,7 @@ gem 'omniauth-facebook'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
