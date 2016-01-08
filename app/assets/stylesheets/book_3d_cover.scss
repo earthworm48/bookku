@@ -3,6 +3,8 @@
   display: inline-block;
   box-shadow: 5px 5px 20px #333;
   margin: 10px;
+  width: 220px;
+  height: auto;
 }
 
 .book img { vertical-align: middle; }
@@ -63,3 +65,5 @@
 
 .csstransforms3d  #book2:before { background-color: #333; }
 .csstransforms3d  #book3:before { background-color: #254053; }
+
+

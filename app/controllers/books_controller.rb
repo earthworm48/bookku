@@ -83,7 +83,6 @@ class BooksController < ApplicationController
       price = x
     when 'OK'
       price = x * 2 / 3
-      byebug
     when 'Looks bad'
       price = x * 1 / 3
     end
