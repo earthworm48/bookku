@@ -51,6 +51,13 @@
               <h3 class="modal-title" id="lineModalLabel">Sign Up Window</h3>
           </div>
           <div class="modal-body">
+
+            <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-facebook" do %>
+              <span class="fa fa-facebook"></span>Sign in to facebook
+            <% end %> 
+
+            <br>
+
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= devise_error_messages! %>
 
