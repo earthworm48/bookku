@@ -98,7 +98,7 @@
     <div class="navbar-wrapper">
       <div class="container">
 
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -117,14 +117,9 @@
                 <li><%= form_for Book.new, method: :get , url: local_search_path, :html => {:class => "navbar-form navbar-left"}, role: "search" do |f| %>
                   <%= text_field_tag :term, params[:term],placeholder:"Search book name here" %>
                   <%= f.submit 'search', :class => 'btn btn-default' %>
-                <% end %></li>
-
-    <%= form_for Book.new, method: :get , url: local_search_path, :html => {:class => "navbar-form navbar-left"}, role: "search" do |f| %>
-        <%= text_field_tag :term, params[:term],placeholder:"Search book name here" %>
-        <%= f.submit 'search', :class => 'btn btn-default' %>
-    <% end %>
+                <% end %></li>  
               </ul>
-                              <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
                     <% if current_user %>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= current_user.email%> <span class="caret"></span></a>
