@@ -1,6 +1,7 @@
 
 class BookTransactionsController < ApplicationController
   
+
   def create
   	
   	@book_transaction = current_user.book_transactions.new(book_transaction_params)
@@ -11,7 +12,6 @@ class BookTransactionsController < ApplicationController
     else
       @errors = @book_transaction.errors
     end
-    # byebug
     redirect_to current_user
   end
 
