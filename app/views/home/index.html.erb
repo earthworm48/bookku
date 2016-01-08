@@ -50,7 +50,7 @@
     </div><!-- /.carousel -->
 <!-- Page Content -->
     <div class="container">
-      <h1 class="h1-top-margin text-center">Search text-books <small>and get it cheaply</small></h1>
+      <h1 class="h1-top-margin text-center">Search text-books <small>and get it cheap</small></h1>
       <br><br><center>
         <div id="custom-search-input">
           <%= form_tag books_path, method: :get do %>
@@ -81,17 +81,17 @@
               <div class="books">
                 <%if @book_rating[0].present?%>
                 <div id="book1" class="book">
-                  <a href="/books/<%=@book_rating[0].id%>"><img src="<%=@book_rating[0].big_image%>" class="size-img" /></a>
+                  <a href="/books/<%=@book_rating[0].id%>"><img src="<%=@book_rating[0].big_image%>" id="book_size" class="size-img" /></a>
                 </div>
                 <%end%>
                 <%if @book_rating[1].present?%>
                 <div id="book2" class="book">
-                  <a href="/books/<%=@book_rating[1].id%>"><img src="<%=@book_rating[1].big_image%>" /></a>
+                  <a href="/books/<%=@book_rating[1].id%>"><img src="<%=@book_rating[1].big_image%>" id="book_size" /></a>
                 </div>
                 <%end%>
                 <%@book_new.each do |book|%>
                 <div id="book3" class="book">
-                  <a href="/books/<%=book.id%>"><img src="<%=book.big_image%>" /></a>
+                  <a href="/books/<%=book.id%>"><img src="<%=book.big_image%>" id="book_size" /></a>
                 </div>
                 <%end%>
               </div>
