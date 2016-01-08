@@ -3,16 +3,16 @@
 	<div>
 		<ul class="list-group">
 			<li class="list-group-item">
-				<a href "http://localhost:3000/">Primary School Textbooks</a>
+				<%= link_to "Primary School Textbooks", books_path(categories: "Primary School Textbooks") %>
 			</li>		 
 			<li class="list-group-item">
-				<a href "http://localhost:3000/">Secondary School Textbooks</a>
+				<%= link_to "Secondary School Textbooks", books_path(categories: "Secondary School Textbooks")%>
 			</li >
 			<li class="list-group-item">
-				<a href "http://localhost:3000/">University Textbooks</a>
+				<%= link_to "University Textbooks", books_path(categories: "University Textbooks") %>
 			</li>
 			<li class="list-group-item">
-				<a href "http://localhost:3000/">Non-fiction Textbooks</a>
+				<%= link_to "Non-fiction Textbooks", books_path,categories: "Non-fiction Textbooks" %>
 			</li>	
 		</ul>
 	</div>

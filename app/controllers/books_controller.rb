@@ -2,7 +2,12 @@ class BooksController < ApplicationController
 
   def index
     # @books = Book.all
-    @books = Book.paginate(:page => params[:page], :per_page => 15)  
+    if params[:categories]
+      @books = Book.where(categories:params[:categories]).paginate(:page => params[:page], :per_page => 15)  
+      
+    else
+      @books = Book.paginate(:page => params[:page], :per_page => 15)  
+    end    
   end
 
   def new
