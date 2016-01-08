@@ -13,7 +13,6 @@ class PointTransactionsController < ApplicationController
 		  amount: "#{points}",
 		  payment_method_nonce: params[:payment_method_nonce]
 		)
-		byebug
 		if result.success?
 			@transaction.user.points += points
 			@transaction.user.save
