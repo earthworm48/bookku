@@ -1,13 +1,14 @@
 class BooksController < ApplicationController
 
   def index
-    # @books = Book.all
-    if params[:categories]
+    if params[:categories] && params[:ajax] == "true"
       @books = Book.where(categories:params[:categories]).paginate(:page => params[:page], :per_page => 15)  
-      
+      render 'books/_book_list', layout: false
+    elsif params[:categories]
+      @books = Book.where(categories:params[:categories]).paginate(:page => params[:page], :per_page => 15)
     else
       @books = Book.paginate(:page => params[:page], :per_page => 15)  
-    end    
+    end
   end
 
   def new
