@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = GoogleBooks.search(params[:term])
+    @books = GoogleBooks.search(params[:term]).paginate(:page => params[:page], :per_page => 15)
     render 'search' 
   end
   
@@ -91,6 +91,7 @@ class BooksController < ApplicationController
       price = x
     when 'OK'
       price = x * 2 / 3
+      byebug
     when 'Looks bad'
       price = x * 1 / 3
     end
