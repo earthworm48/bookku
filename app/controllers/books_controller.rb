@@ -1,7 +1,14 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all  
+    if params[:categories] && params[:ajax] == "true"
+      @books = Book.where(categories:params[:categories]).paginate(:page => params[:page], :per_page => 15)  
+      render 'books/_book_list', layout: false
+    elsif params[:categories]
+      @books = Book.where(categories:params[:categories]).paginate(:page => params[:page], :per_page => 15)
+    else
+      @books = Book.paginate(:page => params[:page], :per_page => 15)  
+    end
   end
 
   def new
@@ -31,6 +38,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    # byebug
   	@book = Book.find(params[:id])
     @book_transaction = BookTransaction.new
   end
@@ -64,7 +72,7 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
-		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn, :subtitle)
+		params.require(:book).permit(:name, :price, :categories, :condition, :description, :prefered_location, :isbn, :subtitle, :big_image)
 	end
 
   def calculate_price(categories,book_condition)

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Pagination
 gem "will_paginate"
+gem "will_paginate-bootstrap"
 # Messages
 gem 'mailboxer'
 # Braintree
