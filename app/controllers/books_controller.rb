@@ -66,6 +66,7 @@ class BooksController < ApplicationController
   end
 
   def local_search
+    # byebug
     @books = Book.search params[:term]
     render :index
   end
@@ -90,8 +91,7 @@ class BooksController < ApplicationController
     when 'Brand new'
       price = x
     when 'OK'
-      price = x * 2 / 3
-      byebug
+      price = x * 2 / 3      
     when 'Looks bad'
       price = x * 1 / 3
     end
