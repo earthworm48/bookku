@@ -16,6 +16,15 @@
 
 @import "bootstrap";
 
+#moveUp{
+  top: 20px;
+  left: 20px;
+  position:fixed;
+  z-index:999;
+  font-size: 3em;
+}
+
+
 body {
   font-family: sans-serif,"Helvetica Neue",Helvetica,Arial;
 }
