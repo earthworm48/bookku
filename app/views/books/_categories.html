@@ -6,10 +6,11 @@
 				<%= link_to "Primary School Textbooks", books_path(categories: "Primary School Textbooks"),{class: "category"} %>
 			</li>		 
 			<li class="list-group-item">
-				<%= link_to "Secondary School Textbooks", books_path(categories: "Secondary School Textbooks"),{class: "category"} %>
+				<%= link_to books_path(categories: "Secondary School Textbooks"),{class: "category"} do %>
+				Secondary School Textbooks <%end%>
 			</li >
 			<li class="list-group-item">
-				<%= link_to "University Textbooks", books_path(categories: "University Textbooks"),{class: "category"} %>
+				<%= link_to books_path(categories: "University Textbooks"),{class: "category"} do %>University Textbooks<%end%>
 			</li>
 			<li class="list-group-item">
 				<%= link_to "Non-fiction Textbooks", books_path(categories: "Non-fiction Textbooks"),{class: "category"} %>
@@ -18,4 +19,3 @@
 		</ul>
 	</div>
 </div>
-
