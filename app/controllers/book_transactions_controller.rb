@@ -3,7 +3,7 @@ class BookTransactionsController < ApplicationController
   
 
   def create
-  	byebug
+  	# byebug
   	@book_transaction = current_user.book_transactions.new(book_transaction_params)
     byebug
     if @book_transaction.save
