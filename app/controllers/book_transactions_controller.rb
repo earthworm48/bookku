@@ -5,7 +5,7 @@ class BookTransactionsController < ApplicationController
   def create
   	# byebug
   	@book_transaction = current_user.book_transactions.new(book_transaction_params)
-    byebug
+    # byebug
     if @book_transaction.save
       @book_transaction.user.points -= @book_transaction.book.price
       @book_transaction.user.save!
