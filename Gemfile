@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'foreman'
 # device & omniauth
 gem 'devise'
+gem 'seed_dump'
 gem 'omniauth-facebook'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
@@ -70,4 +71,3 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
-

@@ -1,7 +1,6 @@
 /*
   *= require footer
   *= require user_profile
-  *= require bootstrap
   *= require font-awesome
   *= require books_new
   *= require books_search
@@ -12,6 +11,7 @@
   *= require bootstrap-social
 */
 
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
