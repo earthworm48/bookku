@@ -1,5 +1,6 @@
-    <!-- Carousel
-    ================================================== -->
+
+<div id="fullpage">
+  <div class="section">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -48,10 +49,14 @@
         <span class="sr-only">Next</span>
       </a>
     </div><!-- /.carousel -->
-<!-- Page Content -->
+  </div>
+
+  <div class="section">
     <div class="container">
       <h1 class="h1-top-margin text-center">Search text-books <small>and get it cheap</small></h1>
-      <br><br><center>
+      <br>
+      <br>
+      <center>
         <div id="custom-search-input">
           <%= form_tag books_path, method: :get do %>
             <div class="input-group col-md-8 col-centered">
@@ -69,61 +74,74 @@
       <br>
       <!-- Title -->
       <div class="row">
-          <div class="col-lg-12 col-centered">
-              <h3>...or find it here</h3>
-          </div>
+        <div class="col-lg-12 col-centered">
+            <h3>...or find it here</h3>
+        </div>
       </div>
+      
       <br>
+    </div>
+  </div>
 
-        <div class="container-outer">
-          <div class="container-inner">
-           <br>
-              <div class="books">
-                <%if @book_rating[0].present?%>
-                <div id="book1" class="book">
-                  <a href="/books/<%=@book_rating[0].id%>"><img src="<%=@book_rating[0].big_image%>" id="book_size" class="size-img" /></a>
-                </div>
-                <%end%>
-                <%if @book_rating[1].present?%>
-                <div id="book2" class="book">
-                  <a href="/books/<%=@book_rating[1].id%>"><img src="<%=@book_rating[1].big_image%>" id="book_size" /></a>
-                </div>
-                <%end%>
-                <%@book_new.each do |book|%>
-                <div id="book3" class="book">
-                  <a href="/books/<%=book.id%>"><img src="<%=book.big_image%>" id="book_size" /></a>
-                </div>
-                <%end%>
-              </div>
-           </div>
-        </div>
-        <br>
-
-
-        <!-- Title -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="text-center">How it works</h2>
+  <div class="section">
+    <div class="container">
+      <div class="container-outer">
+        <div class="container-inner">
+         <br>
+          <div class="books">
+            <%if @book_rating[0].present?%>
+            <div id="book1" class="book">
+              <a href="/books/<%=@book_rating[0].id%>"><img src="<%=@book_rating[0].big_image%>" id="book_size" class="size-img" /></a>
             </div>
+            <%end%>
+            <%if @book_rating[1].present?%>
+            <div id="book2" class="book">
+              <a href="/books/<%=@book_rating[1].id%>"><img src="<%=@book_rating[1].big_image%>" id="book_size" /></a>
+            </div>
+            <%end%>
+            <%@book_new.each do |book|%>
+            <div id="book3" class="book">
+              <a href="/books/<%=book.id%>"><img src="<%=book.big_image%>" id="book_size" /></a>
+            </div>
+            <%end%>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- /.container -->
+  </div>          
 
-    <div id="fullpage">
-        <div class="section">Section 1</div>
-        <div class="section">
-          <div class="slide" data-anchor="slide1"> Slide 1 </div>
-          <div class="slide" data-anchor="slide2"> Slide 2 </div>
-          <div class="slide" data-anchor="slide3"> Slide 3 </div>
-          <div class="slide" data-anchor="slide4"> Slide 4 </div>
-        </div>
-        <div class="section">Section 3</div>
+
+  <div class="section">
+    <div class="slide">
+      <div class="intro">
+        <h1>Create Sliders</h1>
+        <p>Not only vertical scrolling but also horizontal scrolling. With fullPage.js you will be able to add horizontal sliders in the most simple way ever.</p>
+        <img src="imgs/slider.png" alt="slider" />
+      </div>
+
     </div>
+      <div class="slide">
+      <div class="intro">
+        <img src="imgs/1.png" alt="simple" />
+        <h1>Simple</h1>
+        <p>Easy to use. Configurable and customizable.</p>
+      </div>
+    </div>
+      <div class="slide">
+      <div class="intro">
+        <img src="imgs/2.png" alt="Cool" />
+        <h1>Cool</h1>
+        <p>It just looks cool. Impress everybody with a simple and modern web design!</p>
+      </div>
+    </div>
+      <div class="slide">
+      <div class="intro">
+        <img src="imgs/3.png" alt="Compatible" />
+        <h1>Compatible</h1>
+        <p>Working in modern and old browsers too! IE 8 users don't have the fault of using that horrible browser! Lets give them a chance to see your site in a proper way!</p>
+      </div>
+    </div>
+  </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#fullpage').fullpage({
-                sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#000'],
-            });
-        });
-    </script>
+  <div class="section">Section 3</div>
+</div>
