@@ -1,5 +1,5 @@
 $(document).ready(function() {
     $('#fullpage').fullpage({
-    	sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke']
+    	sectionsColor: ['white', '#D5D2CA', 'whitesmoke','#B54249', 'whitesmoke']
     });
 });

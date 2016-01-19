@@ -1,3 +1,34 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.intro {
+  left: -50%;
+  position:relative;
+}
+
+#slide1 {
+  background-image: url("http://i.imgur.com/jio2XtL.jpg");
+}
+
+#slide2 {
+  background-image: url("http://i.imgur.com/nymFEaN.jpg");
+}
+
+#slide3 {
+  background-image: url("http://i.imgur.com/xLMmFXW.jpg");
+}
+
+.slide{
+  background-size: cover;
+}
+
+.slide-caption {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+.slide-caption .btn {
+  text-shadow: none;
+}
+
