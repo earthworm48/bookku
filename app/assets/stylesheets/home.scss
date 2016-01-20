@@ -29,14 +29,15 @@
 
 .btn-primary, .btn-primary:active, .btn-primary:visited {
     background-color: transparent !important;
-    border-color: black !important;
-    color: black !important;
+    border-color: white !important;
+    border-width: 6px;
+    color: white !important;
 }
 
 .btn-primary:hover{
-  border-color: #002846 !important;
-  border-width:6px;
-  color: #002846 !important;
+  background-color: white !important;
+  border-color: white !important;
+  color: #B84D45 !important;
 }
 
 #steps .slide{
@@ -48,8 +49,9 @@
     src: url(sansation_light.woff);
 }
 
-#steps {
+.section {
   font-family: myFirstFont;
+  font-size:20px;
 }
 
 #about {
@@ -60,5 +62,14 @@
   width:100%;
   max-height:165px;
   overflow: hidden; 
+  border-radius:10%;
 }
 
+.breakline{
+  max-width: 400px;
+  border-width: 5px 0px 0px;
+}
+
+#step_intro p{
+  font-size: 14px;
+}
