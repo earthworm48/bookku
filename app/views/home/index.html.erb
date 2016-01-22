@@ -3,10 +3,12 @@
   <div class="section" id="section1">
     <div class="slide" id="slide1">       
       <div class="container">
-        <div class="slide-caption text-center">
-          <h1>Sign up today</h1>
-          <p>Had a heart attack from textbook prices? Weíve been there before..</p>
-          <%=link_to 'Sign Up', '#sign_up_modal', "data-toggle" => 'modal', class: "btn btn-lg btn-primary" %>
+        <div class="slide-caption text-center" id="header">
+          EXCHANGE YOUR TEXTBOOK 
+          <br>
+          WITH OTHERS FOR FREE
+          <br>
+          <%=link_to 'Get Started', '#sign_up_modal', "data-toggle" => 'modal', class: "btn btn-lg btn-primary" %>
         </div>
       </div>
     </div>
@@ -24,96 +26,37 @@
         <div class="slide-caption text-center">
           <h1>Browse our books.</h1>
           <p>Bookku Bookku allows you to obtain the books you really need in exchange for the books that youíve left on the shelf.</p>
-          <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/examples/slide/#" role="button">Browse gallery</a></p>
+          <p><%= link_to "Browse Gallery", books_path, class: "btn btn-lg btn-primary"%></p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="section" id="why">
-    <h1 class="text-center">Why Choose Us?</h1>
-    <hr class="breakline">
     <div class="container">
+      <h1 class="text-center">Why Choose Us?</h1>
+      <hr class="breakline">
+    
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <h2>1. Passionate about books</h2>
-          <p>We know how emotionally difficult it is to throw a book away, even if we will never read it again. We want to find a good home for your textbooks and have them find someone who appreciates them. </p>
+        <div class="col-md-10 col-md-offset-1 text-justify">
+          <h2>1. Absolutely free </h2>
+          <p>We want to solve the issue of high textbook costs, but no way to offset these costs once the books have been purchased. </p>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <h2>2. Not another e-commerce site</h2>
-          <p>By using points instead of prices, we aim to create a community of books lovers who want to share their love of booksve them find someone who appreciates them. </p>
+        <div class="col-md-10 col-md-offset-1 text-justify">
+          <h2>2. Eco-friendly </h2>
+          <p> Instead of throwing the books away, find them a good home and have them find someone who appreciates them</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1 text-justify">
           <h2>3. A worthwhile charitable cause</h2>
           <p>You can choose to give some of your points to charities, so that they can get books they need. </p>
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="section" id="search">
-    <div class="container">
-      <h1 class="h1-top-margin text-center">Search text-books <small>and get it cheap</small></h1>
-      <br>
-      <br>
-      <center>
-        <div id="custom-search-input">
-          <%= form_tag books_path, method: :get do %>
-            <div class="input-group col-md-8 col-centered">
-          <%= text_field_tag :search, params[:search], placeholder: "Type book you've always wanted to have", class: 'search-query form-control search-big' %>
-          <span class="input-group-btn col-centered search-big">
-              <%= button_tag type: 'submit', class: 'btn btn-primary btn-lg' do %>
-              <span class="glyphicon glyphicon-search"></span>
-            <%end%>
-          </span>
-            </div>
-          <%end%> 
-        </div>  
-      </center>
-
-      <br>
-      <!-- Title -->
-      <div class="row">
-        <div class="col-lg-12 col-centered">
-            <h3>...or find it here</h3>
-        </div>
-      </div>
-      
-      <br>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="container">
-      <div class="container-outer">
-        <div class="container-inner">
-         <br>
-          <div class="books">
-            <%if @book_rating[0].present?%>
-            <div id="book1" class="book">
-              <a href="/books/<%=@book_rating[0].id%>"><img src="<%=@book_rating[0].big_image%>" id="book_size" class="size-img" /></a>
-            </div>
-            <%end%>
-            <%if @book_rating[1].present?%>
-            <div id="book2" class="book">
-              <a href="/books/<%=@book_rating[1].id%>"><img src="<%=@book_rating[1].big_image%>" id="book_size" /></a>
-            </div>
-            <%end%>
-            <%@book_new.each do |book|%>
-            <div id="book3" class="book">
-              <a href="/books/<%=book.id%>"><img src="<%=book.big_image%>" id="book_size" /></a>
-            </div>
-            <%end%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>          
-
 
   <div class="section" id="steps">
     
@@ -178,6 +121,123 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="section" id="search">
+    <div class="container">
+      <h1 class="h1-top-margin text-center">Search text-books <small>and get it cheap</small></h1>
+      <br>
+      <br>
+      <center>
+        <div id="custom-search-input">
+          <%= form_tag books_path, method: :get do %>
+            <div class="input-group col-md-8 col-centered">
+          <%= text_field_tag :search, params[:search], placeholder: "Type book you've always wanted to have", class: 'search-query form-control search-big' %>
+          <span class="input-group-btn col-centered search-big">
+              <%= button_tag type: 'submit', class: 'btn btn-primary btn-lg' do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <%end%>
+          </span>
+            </div>
+          <%end%> 
+        </div>  
+      </center>
+
+      <br>
+      <!-- Title -->
+      <div class="row">
+        <div class="col-lg-12 col-centered">
+            <h3>...or find it here</h3>
+        </div>
+      </div>
+      
+      <br>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="container-outer">
+        <div class="container-inner">
+         <br>
+          <div class="books">
+            <%if @book_rating[0].present?%>
+            <div id="book1" class="book">
+              <a href="/books/<%=@book_rating[0].id%>"><img src="<%=@book_rating[0].big_image%>" id="book_size" class="size-img" /></a>
+            </div>
+            <%end%>
+            <%if @book_rating[1].present?%>
+            <div id="book2" class="book">
+              <a href="/books/<%=@book_rating[1].id%>"><img src="<%=@book_rating[1].big_image%>" id="book_size" /></a>
+            </div>
+            <%end%>
+            <%@book_new.each do |book|%>
+            <div id="book3" class="book">
+              <a href="/books/<%=book.id%>"><img src="<%=book.big_image%>" id="book_size" /></a>
+            </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>          
+
+  <div class="section" id="testimonial">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1>Testimonial</h1>
+          <hr class="breakline">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+          <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/4/005/0a0/317/2fa3300.jpg" class="img-circle">
+        </div>
+        <div class="col-md-3">
+          <p>"It is extremely good experience to get your book exchange in Bookku Bookku"</p>
+        </div>
+
+        <div class="col-md-2">
+          <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/4/005/0a0/317/2fa3300.jpg" class="img-circle">
+        </div>
+        <div class="col-md-3">
+          <p>"It is extremely good experience to get your book exchange in Bookku Bookku"</p>
+        </div>        
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+          <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/4/005/0a0/317/2fa3300.jpg" class="img-circle">          
+        </div>
+        <div class="col-md-3">
+          <p>"I will definitely recommend it"</p>
+        </div>
+
+        <div class="col-md-2">
+          <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/4/005/0a0/317/2fa3300.jpg" class="img-circle">          
+        </div>
+        <div class="col-md-3">
+          <p>"I will definitely recommend it"</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+          <img src="https://scontent-kul1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/11377185_10153300724727226_1682277433084150762_n.jpg?oh=482ee86c8a49b60d54f8303839d1fa5d&oe=57448250" class="img-circle">
+        </div>
+        <div class="col-md-3">
+          <p>"I used it once and get addicted to it!"</p>
+        </div>
+
+        <div class="col-md-2">
+          <img src="https://scontent-kul1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/11377185_10153300724727226_1682277433084150762_n.jpg?oh=482ee86c8a49b60d54f8303839d1fa5d&oe=57448250" class="img-circle">
+        </div>
+        <div class="col-md-3">
+          <p>"I used it once and get addicted to it!"</p>
+        </div>
+      </div>      
+    </div> 
   </div>
 
   <div class="section" id="about">

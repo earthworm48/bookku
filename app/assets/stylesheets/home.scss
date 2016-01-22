@@ -14,6 +14,10 @@
   background-image: url("http://i.imgur.com/xLMmFXW.jpg");
 }
 
+#header {
+  font-size: 30px;
+  font-weight:bold;
+}
 .slide{
   background-size: cover;
 }
@@ -72,4 +76,14 @@
 
 #step_intro p{
   font-size: 14px;
+}
+
+#testimonial img{
+  width: 100px;
+}
+
+#testimonial p{
+  font-size: 14px;
+  margin-left: -10%;
+  margin-top: 30px;
 }
