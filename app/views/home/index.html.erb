@@ -14,7 +14,7 @@
             <div class="carousel-caption">
               <h1>Sign up today</h1>
               <p>Had a heart attack from textbook prices? Weíve been there before..</p>
-              <p><a class="btn btn-lg btn-primary" href="#howitworks" role="button">Sign Up</a></p>
+              <p><%=link_to 'Sign Up', '#sign_up_modal', "data-toggle" => 'modal',class: "btn btn-lg btn-primary" %></p>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="carousel-caption">
               <h1>Learn more.</h1>
               <p>Bookku Booku is a community started by book lovers to exchange used textbooks at all levels, including primary, secondary and university.</p>
-              <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/examples/carousel/#" role="button">Learn more</a></p>
+              <p><%= link_to "Learn more", root_path(:anchor => "how"), class:"btn btn-lg btn-primary"%></p>
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="carousel-caption">
               <h1>Browse our books.</h1>
               <p>Bookku Bookku allows you to obtain the books you really need in exchange for the books that youíve left on the shelf.</p>
-              <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/examples/carousel/#" role="button">Browse gallery</a></p>
+              <p><%= link_to "Browse Gallery", books_path, class:"btn btn-lg btn-primary"%></p>
             </div>
           </div>
         </div>
