@@ -1,3 +1,55 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#team img{
+  width:100%;
+  max-height:165px;
+  overflow: hidden; 
+  border-radius:10%;
+}
+
+#about {
+  background-color: #EEEEEE;
+}
+
+#how {
+  background-color: #EEEEEE;
+}
+
+#search-section{
+  height:700px;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
+
+section {
+  font-family: myFirstFont;
+  font-size:20px;
+  height:500px;
+}
+
+.breakline{
+  max-width: 400px;
+  border-width: 5px 0px 0px;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+    background-color: transparent !important;
+    border-color: white !important;
+    border-width: 6px;
+    color: white !important;
+}
+
+.btn-primary:hover{
+  background-color: white !important;
+  border-color: white !important;
+  color: #B84D45 !important;
+}
+
+section h1{
+  padding-top:30px;
+}
