@@ -86,12 +86,14 @@
 			<p>In location: <%=@book.prefered_location%></p>
 			<p>Condition: <%= @book.condition%></p>
 			<br>
-
-			<%= form_for BookTransaction.new do |form| %>
-				<%= form.hidden_field :book_id, :value => @book.id%>
-				<%= form.submit("Exchange for #{@book.price} points", class: "btn btn-primary center-block") %>
-			<% end %>
-
+			<% if current_user %>
+				<%= form_for BookTransaction.new do |form| %>
+					<%= form.hidden_field :book_id, :value => @book.id%>
+					<%= form.submit("Exchange for #{@book.price} points", class: "btn btn-info center-block") %>
+				<% end %>
+			<% else %>
+            	<%=link_to "Exchange for #{@book.price} points", '#sign_up_modal', "data-toggle" => 'modal', class: "btn btn-info center-block"%>
+	        <%end%>
 			<a href="#"><em>Learn more about points</em></a>
 		</div>
 	</div>
