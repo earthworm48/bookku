@@ -42,9 +42,9 @@
       
     </div><!-- /.carousel -->
 <!-- Page Content -->
-    <section>
+    <section id="why">
       <div class="container">
-        <h1 class="text-center">Why Choose Us?</h1>
+        <h1 class="text-center text-uppercase">Why Choose Us?</h1>
         <hr class="breakline">
       
         <div class="row">
@@ -68,7 +68,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="how">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center text-uppercase">
@@ -132,7 +132,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="search-section">
       <div class="container">
         <h1 class="h1-top-margin text-center">Search text-books <small>and get it cheap</small></h1>
         <br><br><center>
@@ -149,9 +149,7 @@
             <%end%> 
           </div>  
         </center>
-
-        <br>
-        <!-- Title -->
+        
         <div class="row">
             <div class="col-lg-12 col-centered">
                 <h3>...or find it here</h3>
@@ -159,29 +157,29 @@
         </div>
         <br>
 
-          <div class="container-outer">
-            <div class="container-inner">
-             <br>
-                <div class="books">
-                  <%if @book_rating[0].present?%>
-                  <div id="book1" class="book">
-                    <a href="/books/<%=@book_rating[0].id%>"><img src="<%=@book_rating[0].big_image%>" id="book_size" class="size-img" /></a>
-                  </div>
-                  <%end%>
-                  <%if @book_rating[1].present?%>
-                  <div id="book2" class="book">
-                    <a href="/books/<%=@book_rating[1].id%>"><img src="<%=@book_rating[1].big_image%>" id="book_size" /></a>
-                  </div>
-                  <%end%>
-                  <%@book_new.each do |book|%>
-                  <div id="book3" class="book">
-                    <a href="/books/<%=book.id%>"><img src="<%=book.big_image%>" id="book_size" /></a>
-                  </div>
-                  <%end%>
+        <div class="container-outer">
+          <div class="container-inner">
+           <br>
+              <div class="books">
+                <%if @book_rating[0].present?%>
+                <div id="book1" class="book">
+                  <a href="/books/<%=@book_rating[0].id%>"><img src="<%=@book_rating[0].big_image%>" id="book_size" class="size-img" /></a>
                 </div>
-             </div>
-          </div>
-          <br>
+                <%end%>
+                <%if @book_rating[1].present?%>
+                <div id="book2" class="book">
+                  <a href="/books/<%=@book_rating[1].id%>"><img src="<%=@book_rating[1].big_image%>" id="book_size" /></a>
+                </div>
+                <%end%>
+                <%@book_new.each do |book|%>
+                <div id="book3" class="book">
+                  <a href="/books/<%=book.id%>"><img src="<%=book.big_image%>" id="book_size" /></a>
+                </div>
+                <%end%>
+              </div>
+           </div>
+        </div>
+        <br>
       </div>
     </section>
 
