@@ -23,14 +23,16 @@
   <br>
   <br>
   <br>
-		<% if notice.present? %>
-	  		<div class="alert alert-success alert-dismissible"><%= notice %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+    <div class="container">
+  		<% if notice.present? %>
+  	  		<div class="alert alert-success alert-dismissible"><%= notice %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
 	  	<% end %>
 	  	<% if alert.present? %>
 	  		<div class="alert alert-danger alert-dismissible"><%= alert %>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
 	  	<% end %>
+    </div>
 
   <%= yield %>
 
