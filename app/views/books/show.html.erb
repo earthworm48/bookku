@@ -89,7 +89,7 @@
 
 			<%= form_for BookTransaction.new do |form| %>
 				<%= form.hidden_field :book_id, :value => @book.id%>
-				<%= form.submit("Exchange for #{@book.price} points", class: "btn btn-primary center-block") %>
+				<%= form.submit("Exchange for #{@book.price} points", class: "btn btn-info center-block") %>
 			<% end %>
 
 			<a href="#"><em>Learn more about points</em></a>
