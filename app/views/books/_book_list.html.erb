@@ -3,7 +3,7 @@
   <% @books.each_with_index do |book,index|%>
   	<% unless book.book_transaction %>
       <div class="col-md-4 col-sm-6 col-xss-12 hero-feature">
-        <div class="thumbnail">
+        <div class="thumbnail book-thumbnail">
           <center>
           <br>
             <div class="book">
@@ -14,7 +14,7 @@
       		<center><p><%=link_to book.name, book_path(book) %></p></center>
           
           <div class='row button-row'>
-            <div class='col-md-6 col-xs-12'>
+            <div class='col-md-6 col-xs-12 button-column'>
               <%if current_user%>
                 <%= form_for BookTransaction.new do |f|%>
                   <%= f.hidden_field :book_id, :value => book.id%>
@@ -25,7 +25,7 @@
               <%end%>
             </div>
 
-            <div class='col-md-6 col-xs-12'>
+            <div class='col-md-6 col-xs-12 button-column'>
               <%= link_to "More info", book ,class: "btn btn-default"%>
             </div>
           </div>
