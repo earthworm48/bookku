@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".category").click(function(t){t.preventDefault(),$.ajax({url:$(this).attr("href")+"&ajax=true",dataType:"html",success:function(t){$(".books_section").html(t)}})})});
