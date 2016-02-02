@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #team img{
-  width:100%;
   max-height:165px;
   overflow: hidden; 
   border-radius:10%;
@@ -29,7 +28,7 @@
 section {
   font-family: myFirstFont;
   font-size:20px;
-  height:500px;
+  min-height:500px;
 }
 
 .breakline{
