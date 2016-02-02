@@ -36,10 +36,11 @@
 
           <div class="col-md-2">
             <% if current_user == @user %>
-            <%= render 'edit' %>
-            <button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#editModal">Edit</button>
-            <button class="btn btn-default btn-block" type="button">Message</button>
-            <button class="btn btn-default btn-block" type="button">Save</button>
+              <%= render 'edit' %>
+              <button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#editModal">Edit</button>
+            <% else %>
+              <%= render 'contact'%>
+              <%= link_to 'Send a message', '#contact_modal', "data-toggle" =>'modal', class: 'btn btn-default btn-block' %>
             <% end %>
           </div>
 

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
 	def show
-  	@user = User.find(params[:id])
+	  	@user = User.find(params[:id])
 		@sellList = Book.where(user_id:current_user.id)
 		@buyList = BookTransaction.where(user_id:current_user.id,status:"pending")
 		@historyList = BookTransaction.where(status:"successful")
