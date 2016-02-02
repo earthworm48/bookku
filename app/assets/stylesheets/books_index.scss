@@ -1,4 +1,4 @@
-.thumbnail { 
+.book-thumbnail { 
   min-height:390px; 
   height:100%;
   position: relative; 
@@ -8,6 +8,11 @@
   position: absolute;
   bottom: 5px;
   padding-right:15px;
+}
+
+.row{
+  margin-left:0px !important; 
+  margin-right:0px !important; 
 }
 
 .thumbnail a {
@@ -30,4 +35,8 @@
 
 .list-group a{
   color:black;
+}
+
+.button-column{
+  text-align:center;
 }
