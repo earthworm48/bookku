@@ -82,7 +82,7 @@
 		<div class="col-md-3 box-book">
 		<br><br>
 			<h3 class="text-center">GET THIS BOOK</h3><br>
-			<p>Owner: <strong><%=@book.user.username%></strong> | <%= link_to 'Send a message', '#contact_modal', "data-toggle" =>'modal', class: 'btn btn-link btn-sm' %></p>
+			<p>Owner: <%= link_to @book.user.username, @book.user%> | <%= link_to 'Send a message', '#contact_modal', "data-toggle" =>'modal', class: 'btn btn-link btn-sm' %></p>
 			<p>In location: <%=@book.prefered_location%></p>
 			<p>Condition: <%= @book.condition%></p>
 			<br>
