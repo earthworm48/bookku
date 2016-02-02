@@ -19,7 +19,7 @@ gem 'foreman'
 gem 'devise'
 gem 'seed_dump'
 gem 'omniauth-facebook'
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem "font-awesome-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
