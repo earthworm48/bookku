@@ -1,6 +1,13 @@
 .thumbnail { 
-  min-height:50px; 
-  height:100%; 
+  min-height:330px; 
+  height:100%;
+  position: relative; 
+}
+
+.button-row{
+  position: absolute;
+  bottom: 5px;
+  padding-right:15px;
 }
 
 .thumbnail a {
