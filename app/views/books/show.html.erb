@@ -1,53 +1,56 @@
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>
+(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=545396652278124";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
 
 <div class="modal fade alert" id="contact_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
-          <h3 class="modal-title" id="lineModalLabel">Start a conversation</h3>
-        </div>
-        <div class="modal-body">
-					<%= form_tag messages_path, method: :post do %>
-				  <div class="form-group">
-				    <%= label_tag 'message[subject]', 'Subject' %>
-				    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
-				  </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+	        <span aria-hidden="true">x</span>
+	        <span class="sr-only">Close</span>
+	      </button>
+        <h3 class="modal-title" id="lineModalLabel">Start a conversation</h3>
+      </div>
+      <div class="modal-body">
+				<%= form_tag messages_path, method: :post do %>
+			  <div class="form-group">
+			    <%= label_tag 'message[subject]', 'Subject' %>
+			    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
+			  </div>
 
-				  <div class="form-group">
-				    <%= label_tag 'message[body]', 'Message' %>
-				    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
-				  </div>
+			  <div class="form-group">
+			    <%= label_tag 'message[body]', 'Message' %>
+			    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+			  </div>
 
-				  <%=hidden_field_tag 'recipients', @chosen_recipient %>
+			  <%=hidden_field_tag 'recipients', @chosen_recipient %>
 
-				  <%= submit_tag 'Send', class: 'btn btn-info' %>
-					<% end %>
-          </div>
-	      </div>
-	    </div>
-	  </div>
-
-
+			  <%= submit_tag 'Send', class: 'btn btn-info' %>
+				<% end %>
+      </div>
+    </div>
+  </div>
+</div>	 
 
 <div class="container">
 	<div class="row">
 	<br>
 		<div class="col-md-3">
-		<br>
-					<div class="books">
-					  <div class="book" id="book_size">
-					    <%= image_tag(@book.big_image) %>
-					  </div>
-					</div>
+			<br>
+			<div class="books">
+			  <div class="book" id="book_size">
+			    <%= image_tag(@book.big_image) %>
+			  </div>
+			</div>
 			<% if current_user%>
 				<% unless @book.user.id == current_user.id%>
 					<div>
@@ -58,7 +61,7 @@
 					</div>
 				<% else %>
 					<div>
-						<%= link_to 'Edit Book', edit_book_path %>	
+						<%= link_to 'Edit Book', edit_book_path %>
 					</div>
 					<div>
 						<%= link_to "Delete Book", book_path(@book), method: :delete  %>
@@ -89,6 +92,7 @@
 				<hr>
 				<%= link_to "Look inside", @book.preview_link, class: "btn btn-warning" %>
 		</div>
+
 		<div class="col-md-3 box-book">
 		<br><br>
 			<h3 class="text-center">GET THIS BOOK</h3><br>
