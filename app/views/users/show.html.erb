@@ -31,13 +31,20 @@
               <span class="glyphicon glyphicon-home" style="color:grey;"></span>
               <strong>Postal :
               </strong><%= @user.postal %>
+              <br>
+              <span class="glyphicon glyphicon-heart" style="color:grey;"></span>
+              <strong>Donation :
+              </strong><%= @user.donate_amount %>
             </p>
           </div>
 
           <div class="col-md-2">
             <% if current_user == @user %>
               <%= render 'edit' %>
-              <button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#editModal">Edit</button>
+              <%= link_to 'Edit', '#editModal', "data-toggle" =>'modal', class: 'btn btn-default btn-block' %>
+              <%= render 'donate' %>
+              <br>
+              <%= link_to 'Donate', '#donateModal', "data-toggle" =>'modal', class: 'btn btn-default btn-block' %>
             <% else %>
               <%= render 'contact'%>
               <%= link_to 'Send a message', '#contact_modal', "data-toggle" =>'modal', class: 'btn btn-default btn-block' %>

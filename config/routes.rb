@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   
   # this must be put after devise_for routes so 
   # it won't overwrite the sign_in path
-  resources :users, only: [:show, :edit, :update]
-
+  resources :users, only: [:show, :edit, :update] do
+    post :donate
+  end
   # MESSAGES:
   resources :conversations, only: [:index, :show, :destroy] do
     member do
