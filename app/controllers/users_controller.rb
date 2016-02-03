@@ -22,6 +22,19 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def donate
+		@user = User.find(params[:user_id])
+		donate_amount = params[:user][:donate_amount].to_i
+		if donate_amount <= @user.points
+			@user.donate_amount += donate_amount
+			@user.points -= donate_amount
+			@user.save!
+			redirect_to @user
+		else
+			redirect_to @user, alert: "You do not have enough points to do so!"
+		end
+
+	end
 
 
 	private
