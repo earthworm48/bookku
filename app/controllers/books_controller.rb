@@ -34,7 +34,19 @@ class BooksController < ApplicationController
 		@book.update!(book_params)
     # @book.price = calculate_price(@book.categories,@book.condition)
     @book.save
-    redirect_to @book
+
+    respond_to do |format|
+      if @book.save
+        # Tell the UserMailer to send a welcome email after save
+        UserMailer.welcome_email(current_user).deliver_later
+ 
+        format.html { redirect_to(@book, notice: 'Book has successfully added.') }
+        format.json { render json: @book, status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @book.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
