@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 		else
 			redirect_to @user, alert: "You do not have enough points to do so!"
 		end
-
 	end
 
 	private
