@@ -64,6 +64,7 @@ group :development, :test do
   gem "awesome_print", require:"ap"
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails', "~> 4.0"
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 group :development do
