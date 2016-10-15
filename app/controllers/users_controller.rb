@@ -3,7 +3,9 @@ class UsersController < ApplicationController
 
 	def show
 	  @user = User.find(params[:id])
+    # FIXME: Correct the namespace
     @sellList = @user.books
+    # TODO: Fixed the historyList and buyList logic
     @buyList = @user.book_transactions.where(status:"pending")
     @historyList = @user.book_transactions.where(status:"successful")
 	end
