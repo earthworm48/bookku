@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
   validates_presence_of :password
-  validates_presence_of :email
+  # TODO: Add this validation
+  # validates_presence_of :email
 
   acts_as_messageable
   
