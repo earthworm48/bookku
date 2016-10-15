@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
-
 	before_action :authenticate_user!
 
 	def show
-	  	@user = User.find(params[:id])
-		@sellList = Book.where(user_id:current_user.id)
-		@buyList = BookTransaction.where(user_id:current_user.id,status:"pending")
-		@historyList = BookTransaction.where(status:"successful")
+	  @user = User.find(params[:id])
+    @sellList = @user.books
+    @buyList = @user.book_transactions.where(status:"pending")
+    @historyList = @user.book_transactions.where(status:"successful")
 	end
 
 	def edit
@@ -36,10 +35,8 @@ class UsersController < ApplicationController
 
 	end
 
-
 	private
 	def user_params
 		params.require(:user).permit(:username, :postal, :email)
 	end
-
 end
