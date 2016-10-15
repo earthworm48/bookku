@@ -15,6 +15,7 @@ gem "braintree"
 gem 'figaro'
 # foreman
 gem 'foreman'
+gem 'faker'
 # device & omniauth
 gem 'devise'
 gem 'seed_dump'

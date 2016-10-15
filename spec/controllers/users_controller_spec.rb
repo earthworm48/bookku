@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 describe UsersController, type: :controller do
-  # let(:user) { create :user }
+  let(:user) { create :user }
 
   before do
-    a = b
+    debugger
+    sign_in user
   end
 
   describe 'user' do
