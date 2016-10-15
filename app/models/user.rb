@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
   has_many :books
   has_many :point_transactions
 
+  validates_presence_of :username
+  validates_presence_of :password
+  # TODO: Add this validation
+  # validates_presence_of :email
+
   acts_as_messageable
   
   devise :database_authenticatable, :registerable,

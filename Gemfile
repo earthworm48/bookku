@@ -15,6 +15,7 @@ gem "braintree"
 gem 'figaro'
 # foreman
 gem 'foreman'
+gem 'faker'
 # device & omniauth
 gem 'devise'
 gem 'seed_dump'
@@ -60,6 +61,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'better_errors'
+  gem "awesome_print", require:"ap"
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', "~> 4.0"
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 group :development do
@@ -68,6 +73,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'quiet_assets'
+  gem 'guard-rspec', require: false
 end
 
 gem 'rails_12factor', group: :production
