@@ -1,0 +1,169 @@
+/
+  Carousel
+  \==================================================
+#myCarousel.carousel.slide{"data-ride" => "carousel"}
+  / Indicators
+  %ol.carousel-indicators
+    %li{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+    %li.active{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+  .carousel-inner{:role => "listbox"}
+    .item
+      %img.first-slide{:alt => "First slide", :src => "http://i.imgur.com/jio2XtL.jpg"}/
+      .container
+        .carousel-caption
+          %h1 Sign up today
+          %p Had a heart attack from textbook prices? Weíve been there before..
+          %p= link_to 'Sign Up', '#sign_up_modal', "data-toggle" => 'modal',class: "btn btn-lg btn-primary"
+    .item
+      %img.second-slide{:alt => "Second slide", :src => "http://i.imgur.com/nymFEaN.jpg"}/
+      .container
+        .carousel-caption
+          %h1 Learn more.
+          %p Bookku Booku is a community started by book lovers to exchange used textbooks at all levels, including primary, secondary and university.
+          %p= link_to "Learn more", root_path(:anchor => "how"), class:"btn btn-lg btn-primary"
+    .item.active
+      %img.third-slide{:alt => "Third slide", :src => "http://i.imgur.com/xLMmFXW.jpg"}/
+      .container
+        .carousel-caption
+          %h1 Browse our books.
+          %p Bookku Bookku allows you to obtain the books you really need in exchange for the books that youíve left on the shelf.
+          %p= link_to "Browse Gallery", books_path, class:"btn btn-lg btn-primary"
+/ /.carousel
+/ Page Content
+%section#why
+  .container
+    %h1.text-center.text-uppercase Why Choose Us?
+    %hr.breakline/
+    .row
+      .col-md-10.col-md-offset-1.text-justify
+        %h2 1. Absolutely free
+        %p We want to solve the issue of high textbook costs, but no way to offset these costs once the books have been purchased.
+    .row
+      .col-md-10.col-md-offset-1.text-justify
+        %h2 2. Eco-friendly
+        %p Instead of throwing the books away, find them a good home and have them find someone who appreciates them
+    .row
+      .col-md-10.col-md-offset-1.text-justify
+        %h2 3. A worthwhile charitable cause
+        %p You can choose to give some of your points to charities, so that they can get books they need.
+%section#how
+  .container
+    .row
+      .col-md-12.text-center.text-uppercase
+        %strong
+          %h1 How it works?
+        %hr.breakline/
+    #step_intro.row
+      .col-md-5.col-md-offset-1.text-left
+        .row
+          .col-md-12
+            %h4 You obtain points when you:
+        .row
+          .col-md-3
+            %img{:alt => "Icons made by http://www.freepik.com ", :src => "http://i.imgur.com/6ttwGt3.png"}/
+          .col-md-9
+            %strong
+              %p.text-uppercase 1. Sell books to a buyer.
+            %p Submit books you own and want to sell.
+        .row
+          .col-md-3
+            %img{:alt => "Icons made by http://www.freepik.com ", :src => "http://imgur.com/93qvpUs.png"}/
+          .col-md-9
+            %strong
+              %p.text-uppercase 2. Buy It
+            %p Buy points directly from Bookku Bookku
+      .col-md-5.col-md-offset-1.text-left
+        .row
+          .col-md-12
+            %h4 You utilize points when you:
+        .row
+          .col-md-3
+            %img{:alt => "Icons made by http://www.freepik.com ", :src => "http://imgur.com/yer6uzN.png"}/
+          .col-md-9
+            %strong
+              %p.text-uppercase 1. Buy books from a seller.
+        %br/
+        .row
+          .col-md-3
+            %img{:alt => "Icons made by http://www.freepik.com ", :src => "http://imgur.com/TsylaLq.png"}/
+          .col-md-9
+            %strong
+              %p.text-uppercase 2. Create a wishlist
+            %p We will send you an email when the books is in store.
+%section#search-section
+  .container
+    %h1.h1-top-margin.text-center
+      Search text-books
+      %small and get it cheap
+    %br/
+    %br/
+    %center
+      #custom-search-input
+        = form_tag books_path, method: :get do
+          .input-group.col-md-8.col-centered
+            = text_field_tag :search, params[:search], placeholder: "Type book you've always wanted to have", class: 'search-query form-control search-big'
+            %span.input-group-btn.col-centered.search-big
+              = button_tag type: 'submit', class: 'btn btn-info btn-lg' do
+                %span.glyphicon.glyphicon-search
+    .row
+      .col-lg-12.col-centered
+        %h3 ...or find it here
+    %br/
+    .container-outer
+      .container-inner
+        %br/
+        .books
+          - if @book_rating[0].present?
+            #book1.book
+              %a{:href => "/books/#{@book_rating[0].id}"}
+                %img#book_size.size-img{:src => "#{@book_rating[0].big_image}"}/
+          - if @book_rating[1].present?
+            #book2.book
+              %a{:href => "/books/#{@book_rating[1].id}"}
+                %img#book_size{:src => "#{@book_rating[1].big_image}"}/
+          - @book_new.each do |book|
+            #book3.book
+              %a{:href => "/books/#{book.id}"}
+                %img#book_size{:src => "#{book.big_image}"}/
+    %br/
+%section#about
+  .container
+    .row
+      .col-md-12.text-center.text-uppercase
+        %strong
+          %h1 About us
+        %hr.breakline/
+    %br/
+    .row
+      .col-md-5.col-md-offset-1.text-justify
+        %i
+        %p Had a heart attack from textbook prices? We've been there before.
+        %p Bookku Booku is a community started by book lovers to exchange used textbooks at all levels, including primary, secondary and university. Bookku Bookku allows you to obtain the books you really need in exchange for the books that you've left on the shelf.
+      .col-md-5.text-justify
+        %p Simply peruse our catalogue for the book you want, or submit a request for a book you need. You get points for every book you sell on the website, and in exchange you use these points to buy books from others. If you don't have anything to sell, that's still no problem. Simply buy some points for us and use it to purchase the books on our site. And yes, we have fiction books as well.
+%section#team
+  .container
+    .row
+      .col-md-12.text-center.text-uppercase
+        %strong
+          %h1 Meet Our Team
+        %hr.breakline/
+    %br/
+    %br/
+    .row
+      #team.col-md-2.col-md-offset-1.col-xs-4.thumb
+        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://github.com/Dudisek", :title => "Petr Duda"}
+          %img.img-responsive{:alt => "Petr Duda", :src => "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/4/005/0a0/317/2fa3300.jpg"}/
+      .col-md-2.col-xs-4.thumb
+        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://github.com/earthworm48", :title => "Sam Kah Chiin"}
+          %img.img-responsive{:alt => "Sam Kah Chiin", :src => "https://scontent-kul1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/11377185_10153300724727226_1682277433084150762_n.jpg?oh=482ee86c8a49b60d54f8303839d1fa5d&oe=57448250"}/
+      .col-md-2.col-xs-4.thumb
+        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://github.com/ezharfahmi", :title => "Ezhar Fahmi"}
+          %img.img-responsive{:alt => "Ezhar Fahmi", :src => "https://scontent-kul1-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10002929_10200601708724713_1386732301_n.jpg?oh=a31ec4416da3951d7512886c8f69b2b1&oe=57345366"}/
+      .col-md-2.col-xs-4.thumb
+        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://www.facebook.com/alexander.angerer?fref=ts", :title => "Alexander Angerer"}
+          %img.img-responsive{:alt => "Alexander Angerer", :src => "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/3/000/05f/22f/17af1cb.jpg"}/
+      .col-md-2.col-xs-4.thumb
+        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://github.com/jinwen95", :title => "Chan Jin Wen"}
+          %img.img-responsive{:alt => "Chan Jin Wen", :src => "https://scontent-kul1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/11100818_10206898217792733_3891814359199471985_n.jpg?oh=b35b93bb034300f988eecca1d8b214ac&oe=572805A1"}/

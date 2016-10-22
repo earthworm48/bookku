@@ -1,0 +1,112 @@
+#fb-root
+:javascript
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=545396652278124";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+#contact_modal.modal.fade.alert{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} x
+          %span.sr-only Close
+        %h3#lineModalLabel.modal-title Start a conversation
+      .modal-body
+        = form_tag messages_path, method: :post do
+          .form-group
+            = label_tag 'message[subject]', 'Subject'
+            = text_field_tag 'message[subject]', nil, class: 'form-control', required: true
+          .form-group
+            = label_tag 'message[body]', 'Message'
+            = text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true
+          = hidden_field_tag 'recipients', @chosen_recipient
+          = submit_tag 'Send', class: 'btn btn-info'
+.container
+  .row
+    %br/
+    .col-md-3
+      %br/
+      .books
+        #book_size.book
+          = image_tag(@book.big_image)
+      - if current_user
+        - unless @book.user.id == current_user.id
+          %div
+            = form_for @book_transaction do |f|
+              = f.hidden_field :book_id, :value => @book.id
+              = f.submit("Buy It",class: "btn btn-default btn-block")
+        - else
+          %div
+            = link_to 'Edit Book', edit_book_path
+          %div
+            = link_to "Delete Book", book_path(@book), method: :delete
+    / col 3
+    .col-md-6
+      %h2
+        = @book.name
+        - if @book.subtitle.present?
+          ,
+          %small
+            = @book.subtitle
+      - if @book.author
+        %h3
+          %small
+            by
+            %strong= @book.author
+      %hr/
+      - if @book.section.present?
+        %p
+          %strong Category:
+          = @book.section
+      - if @book.published_date.present?
+        %p
+          %strong Published by:
+          = @book.publisher
+          in #{@book.published_date}
+      - if @book.pages.present?
+        %p
+          %strong Pages:
+          = @book.pages
+      - if @book.language.present?
+        %p
+          %strong Language:
+          = @book.language.upcase
+      - if @book.rating_count.present?
+        %p
+          %strong Rating:
+          = "#{@book.rating_average} from #{@book.rating_count}"
+      %hr/
+      = link_to "Look inside", @book.preview_link, class: "btn btn-warning"
+    .col-md-3.box-book
+      %br/
+      %br/
+      %h3.text-center GET THIS BOOK
+      %br/
+      %p
+        Owner: #{link_to @book.user.username, @book.user} | #{link_to 'Send a message', '#contact_modal', "data-toggle" =>'modal', class: 'btn btn-link btn-sm'}
+      %p
+        In location: #{@book.prefered_location}
+      %p
+        Condition: #{@book.condition}
+      %br/
+      - if current_user
+        = form_for BookTransaction.new do |form|
+          = form.hidden_field :book_id, :value => @book.id
+          = form.submit("Exchange for #{@book.price} points", class: "btn btn-info center-block")
+      - else
+        = link_to "Exchange for #{@book.price} points", '#sign_up_modal', "data-toggle" => 'modal', class: "btn btn-info center-block"
+      %br/
+      .fb-share-button{"data-href" => "\#{request.original_url}", "data-layout" => "button_count"}
+      |
+      %a{:href => "#"}
+        %em Learn more about points
+  .row
+    .col-md-8
+      %br/
+      %p
+        %strong Description:
+        = @book.description

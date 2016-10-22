@@ -75,6 +75,7 @@ group :development do
   gem 'spring'
   gem 'quiet_assets'
   gem 'guard-rspec', require: false
+  gem 'erb2haml'
 end
 
 gem 'rails_12factor', group: :production

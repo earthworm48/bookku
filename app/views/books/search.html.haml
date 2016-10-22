@@ -1,0 +1,18 @@
+.container
+  %h1 Search Result
+  .row
+    - @books.each_with_index do |book, index|
+      .book-column.col-md-4
+        = image_tag(book.image_link(:zoom => 5))
+        %br/
+        %strong= book.title
+        %br/
+        %i
+          by #{book.authors}
+        %br/
+        %a.open-AddBookDialog.btn.btn-default{"data-id" => "#{book.isbn}", "data-toggle" => "modal", :href => "#addBookDialog", :title => "Add this item"} Add this book
+      - if (index + 1) % 3 == 0
+  %br/
+  %br/
+  .row
+= render 'form'

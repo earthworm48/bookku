@@ -1,0 +1,6 @@
+= form_for @comment do |form|
+  .form-group
+    = form.label :content
+    = form.text_field :content
+  .form-group
+    = form.submit("Submit",class:"btn btn-default btn-block")

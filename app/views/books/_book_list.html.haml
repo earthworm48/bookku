@@ -1,0 +1,25 @@
+#book-row.row
+  - @books.each_with_index do |book,index|
+    - unless book.book_transaction
+      .col-md-4.col-sm-6.col-xss-12.hero-feature
+        .book-thumbnail.thumbnail
+          %center
+            %br/
+            .book
+              %a{:href => "/books/#{book.id}"}= image_tag book.image_url
+          %br/
+          %center
+            %p= link_to book.name, book_path(book)
+          .row.button-row
+            .col-md-6.col-xs-12.button-column
+              - if current_user
+                = form_for BookTransaction.new do |f|
+                  = f.hidden_field :book_id, :value => book.id
+                  = f.submit("Buy Now!",class: "btn btn-default")
+              - else
+                = link_to 'Buy Now!', '#sign_up_modal', "data-toggle" => 'modal', class: "btn btn-default"
+            .col-md-6.col-xs-12.button-column
+              = link_to "More info", book ,class: "btn btn-default"
+%center
+  %ul.pagination
+    = will_paginate @books , renderer: BootstrapPagination::Rails

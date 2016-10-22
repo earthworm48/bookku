@@ -1,0 +1,14 @@
+.content
+  / Page Content
+  .container
+    .col-md-offset-3
+      %h1#book-index-title Books
+  %hr/
+  .container
+    .row
+      / Page Features
+      .col-md-3
+        = render "categories"
+      .col-md-9.books_section
+        = render "book_list"
+  / /.container
