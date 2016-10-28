@@ -7,7 +7,8 @@ describe User, type: :model do
   end
 
   describe "associations" do
-    it { is_expected.to have_many(:books).through(:book_transactions) }
+    it { is_expected.to have_many(:book_transactions) }
+    it { is_expected.to have_many(:books) }
     it { is_expected.to have_many(:point_transactions) }
   end
 end
