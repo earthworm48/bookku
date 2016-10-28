@@ -8,7 +8,7 @@
             %span.sr-only Close
           %h3#lineModalLabel.modal-title Login Window
         .modal-body
-          = link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-facebook" do
+          = link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-social btn-facebook" do
             %span.fa.fa-facebook>
             Log in to facebook
           %br/
@@ -43,7 +43,7 @@
             %span.sr-only Close
           %h3#lineModalLabel.modal-title Sign Up Window
         .modal-body
-          = link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-facebook" do
+          = link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-social btn-facebook" do
             %span.fa.fa-facebook>
             Sign up with facebook
           %br/
