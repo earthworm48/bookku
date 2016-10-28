@@ -1,0 +1,13 @@
+#addPointDialog.modal.fade{"aria-labelledby" => "mySmallModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-body
+        = form_for @point_transaction , url: point_transactions_path do |f|
+          #payment-form
+          %br/
+          = f.hidden_field :points
+          = f.submit 'Submit', class: 'btn btn-success btn-lg'
+:javascript
+  braintree.setup('#{@client_token}', "dropin", {
+    container: "payment-form"
+  });

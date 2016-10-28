@@ -1,0 +1,49 @@
+.content
+  .container
+    .row
+      %h2 Sign up
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .col-lg-6
+          .well.well-sm
+            %strong
+              %span.glyphicon.glyphicon-asterisk>
+              Required Field
+          .form-group
+            = f.label :email
+            %br/
+            .input-group
+              = f.email_field :email, autofocus: true, class: "form-control"
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-asterisk
+          .form-group
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+            %br/
+            .input-group
+              = f.password_field :password, autocomplete: "off", class: "form-control"
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-asterisk
+          .form-group
+            = f.label :password_confirmation
+            %br/
+            .input-group
+              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-asterisk
+          .actions
+            = f.submit "Sign up", class: "btn btn-info pull-right"
+          = render "devise/shared/links"
+      / alert
+      .col-lg-5.col-md-push-1
+        .col-md-12
+          .alert.alert-success
+            %strong
+              %span.glyphicon.glyphicon-ok
+              Success! Message sent.
+          .alert.alert-danger
+            %span.glyphicon.glyphicon-remove
+            %strong Error! Please check all page inputs.
+      / alert

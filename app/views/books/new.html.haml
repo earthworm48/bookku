@@ -1,0 +1,6 @@
+.content
+  %center
+    %h1 Search your book in googlebook
+  = form_for Book.new, method: :get,:url => search_path, role: "search" do |f|
+    = text_field_tag :term, params[:term], placeholder:"Search the book"
+    = f.submit 'search', :class => 'btn btn-default'

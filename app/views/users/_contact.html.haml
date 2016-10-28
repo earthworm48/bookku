@@ -1,0 +1,18 @@
+#contact_modal.modal.fade.alert{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} x
+          %span.sr-only Close
+        %h3#lineModalLabel.modal-title Start a conversation
+      .modal-body
+        = form_tag messages_path, method: :post do
+          .form-group
+            = label_tag 'message[subject]', 'Subject'
+            = text_field_tag 'message[subject]', nil, class: 'form-control', required: true
+          .form-group
+            = label_tag 'message[body]', 'Message'
+            = text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true
+          = hidden_field_tag 'recipients', @user
+          = submit_tag 'Send', class: 'btn btn-info'

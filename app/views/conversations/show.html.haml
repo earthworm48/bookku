@@ -1,0 +1,22 @@
+- page_header "Conversation"
+.container
+  %p
+    Messages with #{User.find(@conversation.receipts.first.receiver_id).username}
+  .panel.panel-default
+    .panel-heading= @conversation.subject
+    .panel-body
+      .messages
+        - @conversation.receipts_for(current_user).each do |receipt|
+          .media
+            - message = receipt.message
+            .media-left
+              = message.sender.username
+            .media-body
+              %h6.media-heading
+                = message.sender.username
+                says at #{message.created_at.strftime("%-d %B %Y, %H:%M:%S")}
+              = message.body
+  = form_tag reply_conversation_path(@conversation), method: :post do
+    .form-group
+      = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true
+    = submit_tag "Send Message", class: 'btn btn-primary'

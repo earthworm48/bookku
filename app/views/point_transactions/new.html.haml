@@ -1,0 +1,86 @@
+.container
+  .row
+    .col-sm-4.col-md-4
+      .option
+        .option-title
+          %h3 5 Points
+          %span no strings attached
+        .option-price
+          %span.price $25
+          %span.period per month
+        .option-list
+          %ul.item-list
+            %li
+              %strong 1GB
+              Disk Space
+            %li
+              %strong 0
+              Email Addresses
+            %li
+              %strong 2
+              Domains
+            %li
+              %strong 4
+              Subdomains
+            %li
+              #order1.qr
+          %a.open-AddPointDialog.btn.btn-success.big{"data-points" => "10", "data-toggle" => "modal", :href => "#addPointDialog"}
+            %i.fa.fa-hand-o-right.hided-icon.big
+            Buy Points
+    .col-sm-4.col-md-4
+      .option
+        .option-title
+          %h3 10 points
+          %span most valued
+        .option-price
+          %span.price $50
+          %span.period per month
+        .option-list
+          %ul.item-list
+            %li
+              %strong 12GB
+              Disk Space
+            %li
+              %strong 7
+              Email Addresses
+            %li
+              %strong 10
+              Domains
+            %li
+              %strong 40
+              Subdomains
+            %li
+              #order2.qr
+          %a.open-AddPointDialog.btn.btn-success.big{"data-points" => "20", "data-toggle" => "modal", :href => "#addPointDialog"}
+            %i.fa.fa-hand-o-right.hided-icon.big
+            Buy Points
+    .col-sm-4.col-md-4
+      .option
+        .option-title
+          %h3 20 Points
+          %span extended version
+        .option-price
+          %span.price $100
+          %span.period per month
+        .option-list
+          %ul.item-list
+            %li
+              %strong 50GB
+              Disk Space
+            %li
+              %strong 30
+              Email Addresses
+            %li
+              %strong 30
+              Domains
+            %li
+              %strong 120
+              Subdomains
+            %li
+              #order3.qr
+          %a.open-AddPointDialog.btn.btn-success.big{"data-points" => "30", "data-toggle" => "modal", :href => "#addPointDialog"}
+            %i.fa.fa-hand-o-right.hided-icon.big
+            Buy Points
+  / /.row
+/ /.container
+= render 'payment'

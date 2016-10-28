@@ -1,0 +1,30 @@
+#addBookDialog.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Add a new book
+      .modal-body
+        = form_for Book.new , html: {multipart: true} do |form|
+          = form.hidden_field :isbn
+          .form-group
+            = form.label :categories
+            %br/
+            %center= form.select :categories, ['Primary School Textbooks', 'Secondary School Textbooks','University Textbooks','Non-Textbooks'],  {}, {required: 'true', autofocus: 'true', class: 'form-control custom'}
+          .form-group
+            = form.label :condition
+            %br/
+            %center
+              = form.select :condition, ['Brand new', 'OK','Looks bad'],  {}, {required: 'true', autofocus: 'true', class: 'form-control custom'}
+          .form-group
+            = form.label :prefered_location
+            %br/
+            = form.text_field :prefered_location , :required => true
+          .form-group
+            = form.label :price
+            %br/
+            = form.text_field :price , :required => true
+      .modal-footer
+        .form-group
+          = form.submit("Done",class:"btn btn-default btn-block")
