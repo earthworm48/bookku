@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   has_many :point_transactions
 
   validates_presence_of :username
-  validates_presence_of :password
   # TODO: Add this validation
   # validates_presence_of :email
 

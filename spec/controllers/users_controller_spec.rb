@@ -43,7 +43,7 @@ describe UsersController, type: :controller do
 
   describe '#donate' do
     describe 'when user has enough points to donate' do
-      it 'will redirect the user profile' do
+      it 'will update the user points and redirect the user profile' do
         get :donate, { user_id: user.id, user: { donate_amount: '80' } }
         current_user = User.find user.id
         expect(assigns(:user)).to eq user
@@ -53,7 +53,7 @@ describe UsersController, type: :controller do
     end
 
     describe 'when user does not has enough points to donate' do
-      it 'will redirect the user profile' do
+      it 'will not update the user points redirect the user profile' do
         get :donate, { user_id: user.id, user: { donate_amount: '200' } }
         current_user = User.find user.id
         expect(assigns(:user)).to eq user

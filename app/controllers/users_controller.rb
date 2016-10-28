@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 	def donate
 		@user = User.find(params[:user_id])
 		donate_amount = params[:user][:donate_amount].to_i
-		if donate_amount <= @user.points
+		if @user.points >= donate_amount
 			@user.donate_amount += donate_amount
 			@user.points -= donate_amount
 			@user.save!
