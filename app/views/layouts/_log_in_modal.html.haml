@@ -1,0 +1,35 @@
+#log_in_modal.modal.fade.alert{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} x
+          %span.sr-only Close
+        %h3#lineModalLabel.modal-title Login Window
+      .modal-body
+        = link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-social btn-facebook" do
+          %span.fa.fa-facebook>
+          Log in to facebook
+        %br/
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            = f.label :email
+            %br/
+            .input-group
+              = f.email_field :email, autofocus: true, class: "form-control"
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-asterisk
+          .form-group
+            = f.label :password
+            %br/
+            .input-group
+              = f.password_field :password, autocomplete: "off", class: "form-control"
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-asterisk
+          - if devise_mapping.rememberable?
+            .field
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .modal-footer
+            .actions
+              = f.submit "Log in", class: "btn btn-info pull-right"
