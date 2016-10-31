@@ -17,7 +17,7 @@ gem 'figaro'
 gem 'foreman'
 gem 'faker'
 # device & omniauth
-gem 'devise'
+gem 'devise', '~> 3.5.6'
 gem 'seed_dump'
 gem 'omniauth-facebook'
 # gem 'bootstrap-sass'

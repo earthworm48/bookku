@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :book_transactions
   has_many :point_transactions
 
-  validates_presence_of :username
+  # validates_presence_of :username
   # TODO: Add this validation
   # validates_presence_of :email
 
