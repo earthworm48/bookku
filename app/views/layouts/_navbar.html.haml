@@ -1,0 +1,43 @@
+.navbar-wrapper
+  .menu_area
+    %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          / FOR MOBILE VIEW COLLAPSED BUTTON
+          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          / LOGO
+          / TEXT BASED LOGO
+          %a.navbar-brand{:href => "/"} Bookku Bookku
+          / IMG BASED LOGO
+          / <a class="navbar-brand" href="#"><img src="img/logo.png" alt="logo"></a>
+        #navbar.navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{:href => "/"} Home
+            %li= link_to "About", root_path(:anchor => "about")
+            %li= link_to "Why us", root_path(:anchor => "why")
+            %li= link_to "All Books", books_path
+            %li
+              = form_for Book.new, method: :get , url: local_search_path, :html => {:class => "navbar-form navbar-left"}, role: "search" do |f|
+                = text_field_tag :term, params[:term],placeholder:"Search book name here"
+                = f.submit 'search', :class => 'btn btn-default'
+          %ul.nav.navbar-nav.navbar-right
+            - if current_user
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  = current_user.email
+                  %span.caret
+                %ul.dropdown-menu{:role => "menu"}
+                  %li= link_to "Add a Book", new_book_path
+                  %li= link_to 'Your Conversations', conversations_path
+                  %li= link_to "Buy Points", new_point_transaction_path
+                  %li= link_to "My Profile", current_user
+                  %li.divider{:role => "separator"}
+                  %li= link_to 'Sign out', destroy_user_session_path, method: :delete
+            - else
+              %li= link_to 'Sign Up', '#sign_up_modal', "data-toggle" => 'modal'
+              %li= link_to 'Login', '#log_in_modal', "data-toggle" =>'modal'

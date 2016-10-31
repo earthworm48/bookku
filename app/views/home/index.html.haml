@@ -1,5 +1,4 @@
 #myCarousel.carousel.slide{"data-ride" => "carousel"}
-  / Indicators
   %ol.carousel-indicators
     %li{"data-slide-to" => "0", "data-target" => "#myCarousel"}
     %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
@@ -139,28 +138,4 @@
         %p Bookku Booku is a community started by book lovers to exchange used textbooks at all levels, including primary, secondary and university. Bookku Bookku allows you to obtain the books you really need in exchange for the books that you've left on the shelf.
       .col-md-5.text-justify
         %p Simply peruse our catalogue for the book you want, or submit a request for a book you need. You get points for every book you sell on the website, and in exchange you use these points to buy books from others. If you don't have anything to sell, that's still no problem. Simply buy some points for us and use it to purchase the books on our site. And yes, we have fiction books as well.
-%section#team
-  .container
-    .row
-      .col-md-12.text-center.text-uppercase
-        %strong
-          %h1 Meet Our Team
-        %hr.breakline/
-    %br/
-    %br/
-    .row
-      #team.col-md-2.col-md-offset-1.col-xs-4.thumb
-        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://github.com/Dudisek", :title => "Petr Duda"}
-          %img.img-responsive{:alt => "Petr Duda", :src => "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/4/005/0a0/317/2fa3300.jpg"}/
-      .col-md-2.col-xs-4.thumb
-        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://github.com/earthworm48", :title => "Sam Kah Chiin"}
-          %img.img-responsive{:alt => "Sam Kah Chiin", :src => "https://scontent-kul1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/11377185_10153300724727226_1682277433084150762_n.jpg?oh=482ee86c8a49b60d54f8303839d1fa5d&oe=57448250"}/
-      .col-md-2.col-xs-4.thumb
-        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://github.com/ezharfahmi", :title => "Ezhar Fahmi"}
-          %img.img-responsive{:alt => "Ezhar Fahmi", :src => "https://scontent-kul1-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10002929_10200601708724713_1386732301_n.jpg?oh=a31ec4416da3951d7512886c8f69b2b1&oe=57345366"}/
-      .col-md-2.col-xs-4.thumb
-        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://www.facebook.com/alexander.angerer?fref=ts", :title => "Alexander Angerer"}
-          %img.img-responsive{:alt => "Alexander Angerer", :src => "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/3/000/05f/22f/17af1cb.jpg"}/
-      .col-md-2.col-xs-4.thumb
-        %a.thumbnail{"data-toggle" => "tooltip", :href => "https://github.com/jinwen95", :title => "Chan Jin Wen"}
-          %img.img-responsive{:alt => "Chan Jin Wen", :src => "https://scontent-kul1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/11100818_10206898217792733_3891814359199471985_n.jpg?oh=b35b93bb034300f988eecca1d8b214ac&oe=572805A1"}/
+= render 'home/team'
