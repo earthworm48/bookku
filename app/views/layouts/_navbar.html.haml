@@ -1,14 +1,19 @@
 .navbar-wrapper
-  .container
-    %nav.navbar.navbar-default.navbar-fixed-top
+  .menu_area
+    %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
       .container
         .navbar-header
+          / FOR MOBILE VIEW COLLAPSED BUTTON
           %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
+          / LOGO
+          / TEXT BASED LOGO
           %a.navbar-brand{:href => "/"} Bookku Bookku
+          / IMG BASED LOGO
+          / <a class="navbar-brand" href="#"><img src="img/logo.png" alt="logo"></a>
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav
             %li.active
